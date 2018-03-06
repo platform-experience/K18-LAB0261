@@ -1,0 +1,17 @@
+$brand-primary:#B93637;
+
+.btn-primary {
+    background-color: $brand-primary !important;
+}
+
+.navbar {
+    border-bottom: 0px !important;
+}
+
+body {
+    background-color: #fff !important;
+}
+
+body .padding-top {
+    padding-top: 0rem !important;
+}
