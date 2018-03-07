@@ -1,0 +1,22 @@
+.image-positioning {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-position: bottom;
+    background-size: cover;
+    position: relative;
+    height: 220px;
+    margin-bottom: 50px;
+}
+
+.text-block {
+    text-align: center;
+    .heading {
+        font-size: 36px;
+        margin-top: 0px;
+        font-weight: 600;
+    }
+    .sub-heading {
+        font-size: 18px;
+    }
+}
