@@ -1,0 +1,75 @@
+.list-div {
+    margin-left: 35px;
+    .ideas-list {
+        display: flex;
+        padding: 0px 10px 25px 10px;
+        border-bottom: 1px solid #ddd;
+        margin-bottom: 25px;
+        .vote {
+            width: 70px;
+            text-align: center;
+            color: $brand-primary;
+            .vote-wrapper {
+                border: 1px solid $brand-primary;
+                font-weight: bold;
+                i {
+                    margin: 10px 0px;
+                }
+                .count {
+                    margin: 0px;
+                    color: $brand-primary;
+                    border-top: 1px solid $brand-primary;
+                    font-size: 18px;
+                    font-weight: 300;
+                    &.voted {
+                        background: $brand-primary;
+                        color: #fff;
+                    }
+                }
+            }
+        }
+        .idea-details {
+            padding-left: 30px;
+            .title {
+                font-size: 24px;
+                font-weight: 300;
+                color: #000;
+            }
+            .description {
+                font-size: 17px;
+                color: #000;
+                font-weight: 300;
+            }
+            .created {
+                display: flex;
+                align-items: center;
+                .text {
+                    margin-left: 10px;
+                    margin-bottom: 0px;
+                    font-weight: 300;
+                    font-size: 14px;
+                    color: #908d8d;
+                }
+            }
+        }
+    }
+    .no-data {
+        text-align: center;
+        .title {
+            font-size: 18px;
+            font-weight: bold;
+        }
+    }
+}
+
+
+/* don't worry about inheritance or spill over onto your own transtion code,
+   these classes are here for only a millisecond for detection purposes */
+
+
+/* Use `none 0s` to disable keyframe animations */
+
+.fa.ng-animate {
+    --webkit-animation: none 0s;
+    animation: none 0s;
+}

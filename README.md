@@ -169,29 +169,86 @@ Click on the **Idea Banner** widget in Studio, and refer to the **HTML Template*
 - In lines **4** and **6**, we are attaching the ngStyle directive to the `div` by using the attribute `ng-style`. As a value for this attribute, we have an in-line JSON object which directly refers to the widget options. This is setting the color of the text to be whatever value is stored in that option.
 - In line **2** of the HTML, we are using the same attribute `ng-style` but instead of having the JSON object inline, we are calling the function `c.getPictureStyle()` which returns the JSON object.
 
-
-
-
-# Lab 4: Create the Sidebar Widget
+# Lab 4: Sidebar Widget
 ## Goal
-In this lab we will create a sidebar widet which talks to the Idea List widget we will create in Lab 5.
+In this lab we will create a sidebar widget which talks to the Idea List widget we will create in Lab 5.
 
-## Create the Idea Sidebar Widget
-// TODO
-### Verify the Changes
-// TODO
+## Create the Widget
+1. In Studio, click **Create Application File**, search for and choose **Widget**, and click **Create**.
+
+2. Click the **Create a new widget** link. Use the below values in the fields, and choose **Submit**.
+
+	| Field         | Value                                 |
+	|---------------|-------------------------------------------|
+	| Widget Name  | Idea Sidebar |
+	| Widget ID | idea-sidebar |
+	
+3. There's quite a bit of code that makes up this widget, so you can copy and paste the code into the corresponding fields from the below links, then save the record:
+	- [Body HTML template](scripts/lab-04/banner-body-html-template.html)
+	- [CSS](scripts/lab-04/banner-css.scss)
+	- [Client controller](scripts/lab-04/banner-client-controller.js)
+
+4. Now, open the **Idea Home** page in Service Portal Designer, and drag and drop the new **Idea Sidebar** widget we've created into the **3** column area of the second container.
+
+	**NOTE:** if the widget doesn’t appear in the list of widgets in Service Portal Designer you may need to refresh the page.
+
+### How it Works
+
+Open a new tab in your browser and navigate to `/ideas` on your instance. You should see the below page.
+
+![Verify](images/lab-04/01-verify.png)
+
+When a widget loads, it's client controller's `$onInit` function gets executed (like a constructor). In there, we are setting the `c.selectedFilter` variable to have the value `all`.
+
+![HTML Template](images/lab-04/03-selected-var.png)
+
+Looking at the code in the HTML template of the widget, on line **3** we have bound the **ngClick** directive to the `button` element using the `ng-click` attribute. This directive simply executes the expression in the value of the attribute. In this case, we are telling it to call the `c.submitIdea()` function.
+
+![HTML Template](images/lab-04/02-html-template.png)
+
+The three `a` elements are links which will act as filters for the idea list widget we will build in lab 5. Again, we are using the **ngClick** directive on each of these elements to call a function, this time `c.filterClicked()`. We are passing it a parameter so that the function can update `c.selectedFilter`.
+
+We are also using the **ngClass** directive on these elements, which attaches CSS classes to an element if the expression returns `true`. If the current value of `c.selectedFilter` is the one related to this link, the `active` class will be added to it, allowing us to add styling to it to appear selected.
 
 ## Communicating Between Widgets
-// TODO
-### Verify the Changes
-// TODO
 
-# Lab 5: Create the List Widget
+The `c.filterClicked()` function doesn't just update the value of `c.selectedFilter` though! Let's have a look at what it does:
+
+![HTML Template](images/lab-04/04-filter-clicked-func.png)
+
+On line **22**, we are using the `$rootScope` service, and the `$broadcast` function on it to broadcast the `filterClicked` event to other widgets and components on the page. We will catch this event in the **Idea List** widget.
+
+### How it Works
+Open a new tab in your browser and navigate to `/ideas` on your instance. Open the console by right-clicking anywhere on the page and clicking inspect element. When you click on links you should see logs appear as shown in the screenshot below. These are coming from line **20** in the screenshot above, and show that upon clicking the link the `c.filterClicked` function is executing and the event has been broadcast.
+
+![Console logs](images/lab-04/05-verify.png)
+
+# Lab 5: List Widget
 ## Goal
-In this lab we will create the Idea List widget. This widget will listend to the Idea Sidebar widget we created in Lab 4.
+In this lab we will create the Idea List widget. This widget will listen to the Idea Sidebar widget we created in Lab 4.
 
-## Create the Idea List Widget
-// TODO
+## Create the Widget
+1. In Studio, click **Create Application File**, search for and choose **Widget**, and click **Create**.
+
+2. Click the **Create a new widget** link. Use the below values in the fields, and choose **Submit**.
+
+	| Field         | Value                                 |
+	|---------------|-------------------------------------------|
+	| Widget Name  | Idea List |
+	| Widget ID | idea-list |
+	
+3. There's quite a bit of code that makes up this widget, so you can copy and paste the code into the corresponding fields from the below links, then save the record:
+	- [Body HTML template](scripts/lab-05/banner-body-html-template.html)
+	- [CSS](scripts/lab-05/banner-css.scss)
+	- [Client controller](scripts/lab-05/banner-client-controller.js)
+
+4. Now, open the **Idea Home** page in Service Portal Designer, and drag and drop the new **Idea List** widget we've created into the **9** column area of the second container.
+
+	**NOTE:** if the widget doesn’t appear in the list of widgets in Service Portal Designer you may need to refresh the page.
+	
+### Verify the Changes
+
+Open a new tab in your browser and navigate to `/ideas` on your instance. You should see the below page.
 
 ## Idea Votes Schema
 // TODO

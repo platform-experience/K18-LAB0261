@@ -1,0 +1,22 @@
+<div class="list-div">
+    <div class="ideas-list" ng-repeat="idea in c.ideas">
+        <div class="vote">
+            <div class="vote-wrapper" ng-click="c.vote(idea)">
+                <i ng-if="!idea.iVoted" class="fa fa-2x fa-heart-o animated swing" aria-hidden="true"></i>
+                <i ng-if="idea.iVoted" class="fa fa-2x fa-heart animated rubberBand" aria-hidden="true"></i>
+                <p ng-class="{'voted': idea.iVoted}" class="count">{{idea.voteCount}}</p>
+            </div>
+        </div>
+        <div class="idea-details">
+            <p class="title">{{idea.title}}</p>
+            <p class="description">{{idea.description}}</p>
+            <div class="created">
+                <sn-avatar class="avatar-small-medium" show-presence="false" primary="idea.openedBySysid" />
+                <p class="text">Created by {{idea.openedByName}} {{idea.createdOnDate}}</p>
+            </div>
+        </div>
+    </div>
+    <div class="no-data" ng-if="c.ideas.length == 0">
+        <p class="title">No ideas found</p>
+    </div>
+</div>

@@ -1,0 +1,13 @@
+<div class="idea-sidebar">
+    <button class="new-idea"
+    ng-click="c.submitIdea()">Add an Idea</button>
+    <a class="filter-links" href="javascript:void(0)"
+    ng-class="{'active': c.selectedFilter == 'all'}"
+    ng-click="c.filterClicked('all')">All Ideas</a>
+    <a class="filter-links" href="javascript:void(0)"
+    ng-class="{'active': c.selectedFilter == 'my'}"
+    ng-click="c.filterClicked('my')">My Ideas</a>
+    <a class="filter-links" href="javascript:void(0)"
+    ng-class="{'active': c.selectedFilter == 'myvotes'}"
+    ng-click="c.filterClicked('myvotes')">My Votes</a>
+</div>
