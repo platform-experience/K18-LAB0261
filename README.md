@@ -417,7 +417,23 @@ In this lab we will see how to efficiantly navigate between two portal pages.
 ![SC Widget Options](images/lab-06/01-sc-widget-options.png)
 
 ## Navigating Between Pages Using `$location`
-// TODO
+
+Locate the **Idea Sidebar** widget in Studio and open. 
+
+![Client script](images/lab-06/02-client-script.png)
+
+Now refresh the portal home page, open the network tab in developer tools, clear it and select the **ADD AN IDEA** button. This will successfully navigate to new page. Check the number of requests made.
+
+![network tab](images/lab-06/03-network-tab-01.png)
+
+Now comment line ``15`` and uncomment lines ``11,12,13,14``. Save the widget.
+
+Refresh portal home page, open the network tab in developer tools, clear it and click on “ADD AN IDEA” button. Check the number of requests made. 
+
+![network tab](images/lab-06/04-network-tab-02.png)
+
+Using angulars ``$location`` to navigate between pages is much more efficient than using ``$window.location.href``
+
 
 # Bonus Lab: Data Tables
 ## Goal
