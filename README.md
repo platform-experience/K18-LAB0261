@@ -368,8 +368,38 @@ Whenever you click a link in the sidebar to filter the list of ideas you should 
 
 ## Using External Libraries
 
-### Verify the Changes
-// TODO
+It is very simple to add a third party JS/CSS library to a widget. Here in our example we will bring in a CSS library called [Animate.css](https://daneden.github.io/animate.css/).
+
+Animate.css is a bunch of cool, fun, and cross-browser animations. Perform a Google search for **animate.css** and download the animate.css file.
+
+![Animate css](images/lab-05/13-animate-css.png)  
+
+Locate and select the Idea List widget in studio. From the Hambuger icon in the upper-left, select Open in platform.
+
+Scroll to related list at the bottom of the page. Click on the **Dependencies** tab, then **new**  
+
+![Dependency Tab](images/lab-05/14-dependency-1.png)  
+
+Give it some name, say **animate.css** (right-click header > **Save**). Now select the CSS Includes tab in related lists and click new
+
+![Widget dependency](images/lab-05/15-dependency-2.png)  
+
+Give the CSS Include record a name (e.g. animate.css) and save it (right-click header > **Save**). Now select the magnify icon next to stylesheet. Create a new stylesheet record by selecting the **New** button.
+
+![Widget dependency](images/lab-05/16-dependency-3.png)  
+
+Then copy and paste the contents of the downloaded animate.css file into the stylesheet and submit. Be sure to also select “update” on CSS Include record as well
+
+![Widget dependency stylesheet](images/lab-05/17-dependency-4.png) 
+
+Now to use animate.css animations we need to add the desired animation class to the HTML element.
+
+If you observe Lines 5 and 6 in HTML, we have classes ``animated swing`` and ``animated rubberBand`` This will animate our heart icons.
+
+![HTML](images/lab-05/18-html-1.png) 
+
+### Verify
+When you refresh the homepage and click to vote on an idea, the heart icon should show ``rubberband`` animation. When you unvote the heart should show ``swing`` animation.
 
 
 # Lab 6: Submit an Idea Page
