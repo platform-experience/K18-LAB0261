@@ -61,7 +61,8 @@ function ideaListCtrl($http, $scope, glideUserSession, spUtil) {
         }
     };
 
-    //Method to get ideas, takes type parameter. Type defines the filter on ideas. type can be 'my' = my ideas, 'all' = all ideas, 'myvotes' = get only ideas i have voted for
+    //Method to get ideas, takes type parameter. Type defines the filter on ideas. 
+	  // type can be 'my' = my ideas, 'all' = all ideas, 'myvotes' = get only ideas i have voted for
     c.getIdeas = function(type) {
         $http.get('/api/x_snc_idea_portal/ideas/getideas?type=' + type, {
             headers: {

@@ -184,9 +184,9 @@ In this lab we will create a sidebar widget which talks to the Idea List widget 
 	| Widget ID | idea-sidebar |
 	
 3. There's quite a bit of code that makes up this widget, so you can copy and paste the code into the corresponding fields from the below links, then save the record:
-	- [Body HTML template](scripts/lab-04/banner-body-html-template.html)
-	- [CSS](scripts/lab-04/banner-css.scss)
-	- [Client controller](scripts/lab-04/banner-client-controller.js)
+	- [Body HTML template](scripts/lab-04/idea-sidebar-body-html-template.html)
+	- [CSS](scripts/lab-04/idea-sidebar-css.scss)
+	- [Client controller](scripts/lab-04/idea-sidebar-client-controller.js)
 
 4. Now, open the **Idea Home** page in Service Portal Designer, and drag and drop the new **Idea Sidebar** widget we've created into the **3** column area of the second container.
 
@@ -238,9 +238,9 @@ In this lab we will create the Idea List widget. This widget will listen to the 
 	| Widget ID | idea-list |
 	
 3. There's quite a bit of code that makes up this widget, so you can copy and paste the code into the corresponding fields from the below links, then save the record:
-	- [Body HTML template](scripts/lab-05/banner-body-html-template.html)
-	- [CSS](scripts/lab-05/banner-css.scss)
-	- [Client controller](scripts/lab-05/banner-client-controller.js)
+	- [Body HTML template](scripts/lab-05/idea-list-body-html-template.html)
+	- [CSS](scripts/lab-05/idea-list-css.scss)
+	- [Client controller](scripts/lab-05/idea-list-client-controller.js)
 
 4. Now, open the **Idea Home** page in Service Portal Designer, and drag and drop the new **Idea List** widget we've created into the **9** column area of the second container.
 
@@ -250,13 +250,53 @@ In this lab we will create the Idea List widget. This widget will listen to the 
 
 Open a new tab in your browser and navigate to `/ideas` on your instance. You should see the below page.
 
-## Idea Votes Schema
-// TODO
+![Verify](images/lab-05/01-verify.png)
 
-## Get Data via REST API
-// TODO
+## The Idea Votes Table
+
+Ideas are store in the out-of-box **Idea** table (`idea`), which is part of the **Project Portfolio Suite with Financials** plugin. We have created a custom table called **Idea Votes** to store votes (`x_snc_idea_portal_idea_votes`). Here is the schema diagram for this table:
+
+![Idea Votes Schema](images/lab-05/02-idea-votes.png)
+
+The table has 3 fields of interest:
+
+- **Name** - a reference to record the user who voted
+- **Idea** - a reference to record the idea the user voted for
+- **Voted** - a true/false field, to allow users to "un-vote" for an idea
+
+## Scripted REST API
+The ideas shown in this widget are obtained via a Scripted REST API (this has been pre-loaded onto your instance). We will also be using this to vote on ideas.
+
+Looking at line **6** of the client script...
+
+![Idea Votes Schema](images/lab-05/03-client-script-1.png)
+
+When the widget loads we are calling the `c.getIdeas()` function. This function takes the type of idea as a parameter.
+
+| Type         |  Ideas      |
+|---------------|-------------------------------------------|
+| `all`  | All ideas |
+| `my` | Only ideas which I have submitted |
+| `myvotes` | Only ideas which I have voted on |
+
+Further down the client script...
+
+![Idea Votes Schema](images/lab-05/04-client-script-2.png)
+
+On line **67** we are making a HTTP GET request the `getideas` endpoint of the Scripted REST API, passing in `type` as a parameter. The [`$http`](https://docs.angularjs.org/api/ng/service/$http) service is built into AngularJS and is used to make [AJAX](https://developer.mozilla.org/en-US/docs/Web/Guide/AJAX) calls.
+
+When we get the response from the server, the function passed into `.then()` gets called, and within the function we can process an act upon the response as required.
+
 ### Verify the Changes
-// TODO
+On line `74` of the client script we are logging the response from the server. Open your browser console and examine the response. It should look similar to this:
+
+![Idea Votes Schema](images/lab-05/05-get-response.png)
+
+We are interested in two things here. First, that the status code is `200`, which shows that the server reports that the request executed `OK`. Also, that the `result` object is an `Array` of **2** ideas.
+
+On line **2** of the HTML Template, we are using AngularJS' **ngRepeat** directive 
+
+![ngRepeat](images/lab-05/06-ng-repeat.png)
 
 ## Record Watcher
 // TODO
