@@ -55,15 +55,14 @@ Open a browser which you're not logged into (or an "incognito" window) and navig
 
 	```
 	background-image: url('sp-landing-back.jpg');
-
 	``` 
 	
 	Change the image name from `sp-landing-back.jpg` to `Login_bg.jpg` and save the record. Line 8 should now look like this:
 	
 	```
 	background-image: url('Login_bg.jpg');
-	
 	```
+	
 	`login_bg.jpg` is an image from the `db_image` table; It's been pre-loaded on your intance.
 4. Open the page in Service Portal Designer by clicking on the **Edit Idea Login (idea_login) page in Designer** link.
 
@@ -287,32 +286,88 @@ On line **67** we are making a HTTP GET request the `getideas` endpoint of the S
 
 When we get the response from the server, the function passed into `.then()` gets called, and within the function we can process an act upon the response as required.
 
-### Verify the Changes
+### How it Works
 On line `74` of the client script we are logging the response from the server. Open your browser console and examine the response. It should look similar to this:
 
 ![Idea Votes Schema](images/lab-05/05-get-response.png)
 
-We are interested in two things here. First, that the status code is `200`, which shows that the server reports that the request executed `OK`. Also, that the `result` object is an `Array` of **2** ideas.
+We are interested in two things here. First, that the status code is `200`, which shows that the server reports that the request executed `OK`. Also, that the `result` object is an `Array` of **2** ideas. Once we get the response, the array in the result gets assigned to the `c.ideas` variable.
 
-On line **2** of the HTML Template, we are using AngularJS' **ngRepeat** directive 
+On line **2** of the HTML Template, we're using AngularJS' **ngRepeat** directive. This directive creates a copy of this element, and all it's child elements, for each of the items within the array passed into it (incidated by the red line).
+
+In this case we are passing in the `c.ideas` array, and telling it we want to refer to each item by the variable name `idea`.
+
+On lines **17** and **18** you can see we're outputting the `title` and `description` of the idea.
 
 ![ngRepeat](images/lab-05/06-ng-repeat.png)
 
-## Record Watcher
-// TODO
+Lastly, on line **5** we are again using the **ngClick** directive, this time to call the function `c.vote()`. Inside this function we are making another call to the Scripted REST API, which will register that the user has voted for that item.
+
 ### Verify the Changes
-// TODO
+
+Open a new tab in your browser and navigate to `/ideas` on your instance. If you click on the heart icon, a vote for the idea will register and the heart icon will turn solid red as shown below.
+
+![Voted Idea](images/lab-05/07-verify.png)
+
+**NOTE:** you cannot vote for your own idea.
+
+## Record Watcher
+What happens if another user has the list of ideas open at the same time, and votes on an idea? How can we ensure the vote count is always accurate?
+
+**Record Watcher** is an out-of-box Service Portal functionality which allows us to watch for changes to records in a performant way. On line **15** of the client script we are registering a Record Watcher on the **Idea Votes** table. This means that whenever there is an update to a record in this table, the function passed in as the fourth parameter get called. Within this function we can then update the UI accordingly.
+
+### Verify the Changes
+1. Open a new tab in your browser and navigate to `/ideas` on your instance.
+
+2. Open a browser which you're not logged into (or an "incognito" window) and navigate to `/ideas` on your instance.
+3. At the login screen in the incognito window, login as the below user:
+
+	| Username         |  Password      |
+	|---------------|-------------------------------------------|
+	| `bessie.sutton`  | `bessie` |
+	
+4. Vote on an idea.
+5. The vote count should increment automatically, even in your original window from step 1.
+
 
 ## Moment.js
-// TODO
 
-## Widget Communication (contd.)
-// TODO
+In the UI, the creation date isn't in a human-readable format:
+
+![Not Human Readable](images/lab-05/08-not-human-readable.png)
+
+It would be much better if it were to say something like "created 3 days ago", which is what is sometimes referred to as "**timeago format**". Fortunately, the **Moment.js** library comes out-of-box with Service Portal. [Moment.js](https://momentjs.com/) is a very powerful library to parse, validate, and manipulate dates in JavaScript. With the help of this library, we can easily convert it to display in timeago format.
+
+1. Open the **Idea List** widget.
+2. Comment out line **74** of the Client Script by adding two backslashes at the start of the line (`//`).
+3. Un-comment line **75** of by removing the two backslashes from the start of the line.
+
+![Commented out](images/lab-05/09-commented-out.png)
+
+### How it Works
+
+The `getCreatedTimeAgo()` function will now parse the response we got back from the REST API. On line **84** we are creating a `moment()` object, passing into it the creation date of an idea. We are then calling the `fromNow()` function on it to convert the date to timeago format.
+
+![getCreatedTimeAgo()](images/lab-05/10-get-created-time-ago.png)
+
 ### Verify the Changes
-// TODO
 
-## Using an External Library
-// TODO
+Open a new tab in your browser and navigate to `/ideas` on your instance. The creation date of ideas should now appear like below:
+
+![timeago format](images/lab-05/11-timeago-format.png)
+
+## Widget Communication (continued)
+
+On line **91** of the Client Script we are listening for the event `filterClicked`, which is broadcast by the Idea Sidebar widget. Based on the type of filter clicked, the `c.getIdeas()` function is called with the filter type.
+
+### Verify
+
+Whenever you click a link in the sidebar to filter the list of ideas you should see the log message from line **92** appear in your browser console, as shown below:
+
+![events fired](images/lab-05/12-events-fired.png)
+
+## Using External Libraries
+
 ### Verify the Changes
 // TODO
 
