@@ -5,6 +5,18 @@
 ## Service Portal Core Concepts
 // TODO
 
+## Instance Preparation
+
+**NOTE:** If you're following this lab in a ServiceNow-run session, on an instance provided to you for the lab, no preparation steps are necessary. The below steps have already been performed for you.
+
+This lab requires that your instance is running the **Kingston** release of ServiceNow.
+
+1. Activate the **Project Portfolio Suite with Financials** plugin **without demo data**.
+2. Download and install the [global update set](resources/update-sets/01-idea-portal-global-update-set.xml).
+3. Download and install the [scoped update set](resources/update-sets/02-idea-portal-scoped-update-set.xml).
+
+That's it! You're now all set to begin the lab!
+
 # Lab 1: The Portal Record
 ## Goal
 In this lab we will configure our Portal record, and the Theme associated with it.
