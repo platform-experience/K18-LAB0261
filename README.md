@@ -403,10 +403,18 @@ When you refresh the homepage and click to vote on an idea, the heart icon shoul
 
 
 # Lab 6: Submit an Idea Page
+
 ## Goal
-// TODO
-## Create the Page
-// TODO
+In this lab we will see how to efficiantly navigate between two portal pages. 
+
+## Auto redirect on Idea submission
+
+1. Open **Idea Create** page in Page Designer.
+2. You can see this page has two OOTB widgets.
+3. Click on the pencil icon for the **SC Catalog Item Deprecated** widget.
+4. Make sure your widget options match the ones in the image below and save.
+
+![SC Widget Options](images/lab-06/01-sc-widget-options.png)
 
 ## Navigating Between Pages Using `$location`
 // TODO
