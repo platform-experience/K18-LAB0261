@@ -15,6 +15,8 @@ This lab requires that your instance is running the **Kingston** release of Serv
 2. Download and install the [global update set](resources/update-sets/01-idea-portal-global-update-set.xml).
 3. Download and install the [scoped update set](resources/update-sets/02-idea-portal-scoped-update-set.xml).
 
+For instructions on installing update sets, see the [ServiceNow Documentation site](https://docs.servicenow.com/bundle/istanbul-application-development/page/build/system-update-sets/task/t_LoadCustomizationsFromAnXMLFile.html).
+
 That's it! You're now all set to begin the lab!
 
 # Lab 1: The Portal Record
@@ -69,10 +71,10 @@ Open a browser which you're not logged into (or an "incognito" window) and navig
 	background-image: url('sp-landing-back.jpg');
 	``` 
 	
-	Change the image name from `sp-landing-back.jpg` to `Login_bg.jpg` and save the record. Line 8 should now look like this:
+	Change the image name from `sp-landing-back.jpg` to `login-bg.jpg` and save the record. Line 8 should now look like this:
 	
 	```
-	background-image: url('Login_bg.jpg');
+	background-image: url('login-bg.jpg');
 	```
 	
 	`login_bg.jpg` is an image from the `db_image` table; It's been pre-loaded on your intance.
@@ -135,11 +137,11 @@ In this lab we will create a customizable banner widget
 4. Let's add this widget to our home page. In Studio, click on **Idea Home** (under **Service Portal** ► **Service Portal Pages**).
 5. In the window that opens, click the **Edit Idea Home (idea_home) page in Designer** link.
 6. In the panel on the left, find our **Idea Banner** widget, and drag and drop it into our 12 column layout in the first container.
-7. Hover over the widget that's now in the container, and click the pencil icon. You will see 4 options you can configure on this widget. Fill in the options as follows, and press **Save**.
+7. Hover over the widget that's now in the container, and click the pencil icon. You will see four options you can configure on this widget. Fill in the options as follows, and press **Save**.
 
 	| Option         | Value                                 |
 	|---------------|-------------------------------------------|
-	| Background Image        | idea_banner.jpg |
+	| Background Image        | idea-banner.jpg |
 	| Align Image | center |
 	| Heading | Welcome to the ServiceNow Ideation Portal |
 	| Heading Text Color | #d9534f |
@@ -287,8 +289,8 @@ When the widget loads we are calling the `c.getIdeas()` function. This function 
 | Type         |  Ideas      |
 |---------------|-------------------------------------------|
 | `all`  | All ideas |
-| `my` | Only ideas which I have submitted |
-| `myvotes` | Only ideas which I have voted on |
+| `my-ideas` | Only ideas which I have submitted |
+| `my-votes` | Only ideas which I have voted on |
 
 Further down the client script...
 

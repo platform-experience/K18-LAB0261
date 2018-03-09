@@ -1,42 +1,54 @@
 function ideaListCtrl($http, $scope, glideUserSession, spUtil) {
+
     /* widget controller */
     var c = this;
+
+    var votesTable = 'x_snc_idea_portal_vote';
+    var votesTableAPI = '/api/now/table/' + votesTable;
 
     c.$onInit = function() {
         c.getIdeas('all');
     }
 
-    //glideUserSession provider OOTB used to get current users details for ex: sys_id, fullname
+    // glideUserSession is an out-of-box service that's part of Service Portal
+    // which can be used to get the current users details. For example, it can
+    // get their Sys ID or full name.
     glideUserSession.loadCurrentUser().then(function(user) {
-        c.currentUsedID = user.userID;
+        c.currentUserId = user.userID;
     });
 
-    //Record watcher to keep lookout for votes
-    spUtil.recordWatch($scope, "x_snc_idea_portal_idea_votes", "", function(name, data) {
-        console.log('Inside record watcher ' + name);
-        var ideaSysid = '';
+    // Keep a lookout for new votes using Record Watcher
+    spUtil.recordWatch($scope, votesTable, '', function(name, data) {
+
+        console.log('Inside Record Watcher: ' + name);
+
+        var ideaSysId = '';
         var voteValue = name.data.record.voted.value === 'true';
+
         if (name.data.operation == 'update') {
-            $http.get('/api/now/table/x_snc_idea_portal_idea_votes?sysparm_query=sys_id=' + name.data.sys_id, {
-                headers: {
-                    'Accept': 'application/json',
-                    'Content-Type': 'application/json',
-                    'X-UserToken': window.g_ck
-                }
-            }).then(function(response) {
-                ideaSysid = response.data.result[0].idea.value;
-                c.adjustVotes(ideaSysid, voteValue);
+
+            $http.get(
+                votesTableAPI + '?sysparm_query=sys_id=' + name.data.sys_id,
+                {
+                    headers: {
+                        'Accept': 'application/json',
+                        'Content-Type': 'application/json',
+                        'X-UserToken': window.g_ck
+                    }
+                }).then(function(response) {
+                    ideaSysid = response.data.result[0].idea.value;
+                    c.adjustVotes(ideaSysId, voteValue);
             });
         } else {
-            ideaSysid = name.data.record.idea.value;
-            c.adjustVotes(ideaSysid, voteValue);
+            ideaSysId = name.data.record.idea.value;
+            c.adjustVotes(ideaSysId, voteValue);
         }
 
     });
 
     //Method to capture idea votes. makes a REST call
     c.vote = function(idea) {
-        if (idea.openedBySysid != c.currentUsedID) {
+        if (idea.openedBySysId != c.currentUserId) {
             $http.get('/api/x_snc_idea_portal/ideas/voteidea?idea=' + idea.sys_id, {
                 headers: {
                     'Accept': 'application/json',
@@ -78,18 +90,24 @@ function ideaListCtrl($http, $scope, glideUserSession, spUtil) {
         });
     }
 
-    //Using moment js that comes OOTB in Service portal to convert date time to user friendly time ago
+    // Using Moment.js to convert the created on date to timeago format
     function getCreatedTimeAgo(ideas) {
+
         for (var index = 0; index < ideas.length; index++) {
-            ideas[index].createdOnDate = moment(ideas[index].createdOnDate).fromNow();
+
+            var date = ideas[index].createdOnDate;
+            ideas[index].createdOnDate = moment(date).fromNow();
         }
+
         return ideas;
     }
 
 
-    //Event caught based on filter selected in sidebar
-    $scope.$on('filterClicked', function(event, data) {
-        console.log('event caught type is ' + data);
+    // Event caught based on filter selected in the Idea Sidebar widget
+    $scope.$on('ideaPortal.applyFilter', function(event, data) {
+
+        console.log('Event caught type is: ' + data);
+        
         c.getIdeas(data);
     });
 }
