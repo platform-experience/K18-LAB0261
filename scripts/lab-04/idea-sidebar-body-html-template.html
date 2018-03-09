@@ -3,11 +3,11 @@
     ng-click="c.submitIdea()">Add an Idea</button>
     <a class="filter-links" href="javascript:void(0)"
     ng-class="{'active': c.selectedFilter == 'all'}"
-    ng-click="c.filterClicked('all')">All Ideas</a>
+    ng-click="c.applyFilter('all')">All Ideas</a>
     <a class="filter-links" href="javascript:void(0)"
     ng-class="{'active': c.selectedFilter == 'my-ideas'}"
-    ng-click="c.filterClicked('my-ideas')">My Ideas</a>
+    ng-click="c.applyFilter('my-ideas')">My Ideas</a>
     <a class="filter-links" href="javascript:void(0)"
     ng-class="{'active': c.selectedFilter == 'my-votes'}"
-    ng-click="c.filterClicked('my-votes')">My Votes</a>
+    ng-click="c.applyFilter('my-votes')">My Votes</a>
 </div>

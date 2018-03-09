@@ -4,7 +4,9 @@ function ideaListCtrl($http, $scope, glideUserSession, spUtil) {
     var c = this;
 
     var votesTable = 'x_snc_idea_portal_vote';
-    var votesTableAPI = '/api/now/table/' + votesTable;
+    
+    var tableApiEndpoint = '/api/now/table/' + votesTable;
+    var scriptedApiEndpoint = '/api/x_snc_idea_portal/ideas/';
 
     c.$onInit = function() {
         c.getIdeas('all');
@@ -28,7 +30,7 @@ function ideaListCtrl($http, $scope, glideUserSession, spUtil) {
         if (name.data.operation == 'update') {
 
             $http.get(
-                votesTableAPI + '?sysparm_query=sys_id=' + name.data.sys_id,
+                tableApiEndpoint + '?sysparm_query=sys_id=' + name.data.sys_id,
                 {
                     headers: {
                         'Accept': 'application/json',
@@ -49,7 +51,7 @@ function ideaListCtrl($http, $scope, glideUserSession, spUtil) {
     //Method to capture idea votes. makes a REST call
     c.vote = function(idea) {
         if (idea.openedBySysId != c.currentUserId) {
-            $http.get('/api/x_snc_idea_portal/ideas/voteidea?idea=' + idea.sys_id, {
+            $http.get(scriptedApiEndpoint + 'voteidea?idea=' + idea.sys_id, {
                 headers: {
                     'Accept': 'application/json',
                     'Content-Type': 'application/json',
@@ -73,10 +75,13 @@ function ideaListCtrl($http, $scope, glideUserSession, spUtil) {
         }
     };
 
-    //Method to get ideas, takes type parameter. Type defines the filter on ideas. 
-	  // type can be 'my' = my ideas, 'all' = all ideas, 'myvotes' = get only ideas i have voted for
+    // Method to get ideas from the Scripted REST API.
+    // Takes type parameter, which is the types of ideas wanted:
+    // all = All ideas
+    // my-ideas = Only ideas which I have submitted
+    // my-votes = Only ideas which I have voted on
     c.getIdeas = function(type) {
-        $http.get('/api/x_snc_idea_portal/ideas/getideas?type=' + type, {
+        $http.get(scriptedApiEndpoint + 'getideas?type=' + type, {
             headers: {
                 'Accept': 'application/json',
                 'Content-Type': 'application/json',
@@ -107,7 +112,7 @@ function ideaListCtrl($http, $scope, glideUserSession, spUtil) {
     $scope.$on('ideaPortal.applyFilter', function(event, data) {
 
         console.log('Event caught type is: ' + data);
-        
+
         c.getIdeas(data);
     });
 }
