@@ -1,9 +1,4 @@
 # Introduction
-## What is Service Portal?
-// TODO
-
-## Service Portal Core Concepts
-// TODO
 
 ## Instance Preparation
 
@@ -13,7 +8,7 @@ This lab requires that your instance is running the **Kingston** release of Serv
 
 1. Activate the **Project Portfolio Suite with Financials** plugin **without demo data**.
 2. Download and install the [global update set](resources/update-sets/01-idea-portal-global-update-set.xml).
-3. Download and install the [scoped update set](resources/update-sets/02-idea-portal-scoped-update-set.xml).
+3. Download and install the [scoped update set](resources/update-sets/02-idea-portal-scoped-update-set.xml), or fork and import the [application in GitHub](https://github.com/sush-chandrashekar/idea-portal-envelope).
 
 For instructions on installing update sets, see the [ServiceNow Documentation site](https://docs.servicenow.com/bundle/istanbul-application-development/page/build/system-update-sets/task/t_LoadCustomizationsFromAnXMLFile.html).
 
@@ -21,7 +16,7 @@ That's it! You're now all set to begin the lab!
 
 # Lab 1: The Portal Record
 ## Goal
-In this lab we will configure our Portal record, and the Theme associated with it.
+In this lab you will learn how to configure portals and customise the theme applied to them.
 
 ## Create the Portal
 1.	Open your web browser and navigate to the URL of your instance.
@@ -41,7 +36,7 @@ In this lab we will configure our Portal record, and the Theme associated with i
 
 # Lab 2: Cloning and Creating Pages
 ## Goal
-In this lab we will clone an existing page, modify it, and create new pages for our portal.
+In this lab we will create a login page for our portal, and the home page which will allow users to view and vote on ideas.
 
 ## Cloning Existing Pages
 1. In the application navigator, search for **Pages**, and open the result under the **Service Portal** application.
@@ -126,7 +121,7 @@ Open a browser which you're not logged into (or an "incognito" window) and navig
 
 # Lab 3: Banner Widget
 ## Goal
-In this lab we will create a customizable banner widget
+In this lab we will learn how to create widgets that are customizable.
 
 ## Banner Widget
 1. For convenience, we have included the **Idea Banner** widget on your instance, but it's empty. Find this widget in Studio, and open it.
@@ -192,7 +187,7 @@ Click on the **Idea Banner** widget in Studio, and refer to the **HTML Template*
 
 # Lab 4: Sidebar Widget
 ## Goal
-In this lab we are going to create a sidebar widget which talks to the Idea List widget we will create in Lab 5.
+In this lab we will learn how to create widgets which control the behaviour of other widgets.
 
 ## Creating Widgets
 1. In Studio, click **Create Application File**, search for and choose **Widget**, and click **Create**.
@@ -250,7 +245,7 @@ Open a new tab in your browser and navigate to `/ideas` on your instance. Open t
 
 # Lab 5: List Widget
 ## Goal
-In this lab we will create the Idea List widget. This widget will show a list of ideas matching the filter applied by the Idea Sidebar widget we created in Lab 4.
+In this lab we will learn how to use a widget to display data, and how to retrieve updated data. We will also learn how to use external libraries within your widget to add extra functionality to them withought having to develop this functionality from scratch.
 
 ## Create the Widget
 1. In Studio, click **Create Application File**, search for and choose **Widget**, and click **Create**.
@@ -431,7 +426,7 @@ When you refresh the homepage and click to vote on an idea, the heart icon shoul
 # Lab 6: Submit an Idea Page
 
 ## Goal
-In this lab we will see how to efficiantly navigate between two portal pages. 
+In this lab you will learn how to efficiently navigate between portal pages.
 
 ## Auto redirect on Idea submission
 
