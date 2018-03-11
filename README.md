@@ -232,11 +232,11 @@ Looking at the code in the HTML template of the widget:
 
 ## Communicating Between Widgets
 
-The `c.applyFilter()` function doesn't just update the value of `c.selectedFilter` though! Let's have a look at what it does:
+The `c.applyFilter()` function doesn't just update the value of `c.selectedFilter` though! Let's have a look at what else it does:
 
 ![applyFilter Function](images/lab-04/04-apply-filter-func.png)
 
-On line **29**, we are using the `$rootScope` service, and the `$broadcast` function on it to broadcast the `ideaPortal.applyFilter` event to other widgets and components on the page. We will catch this event in the **Idea List** widget.
+On line **29**, we are using the `$rootScope` service, and the `$broadcast` function on it to broadcast the `ideaPortal.applyFilter` event to other widgets and components on the page. This event name is nothing special; it's just something we made up. We will catch this event in the **Idea List** widget.
 
 ### How it Works
 Open a new tab in your browser and navigate to `/ideas` on your instance. Open the console by right-clicking anywhere on the page and clicking inspect element. When you click on links you should see logs appear as shown in the screenshot below. These are coming from line **20** in the screenshot above, and show that upon clicking the link the `c.filterClicked` function is executing and the event has been broadcast.
@@ -274,24 +274,24 @@ Open a new tab in your browser and navigate to `/ideas` on your instance. You sh
 
 ## The Idea Votes Table
 
-Ideas are store in the out-of-box **Idea** table (`idea`), which is part of the **Project Portfolio Suite with Financials** plugin. We have created a custom table called **Idea Votes** to store votes (`x_snc_idea_portal_idea_votes`). Here is the schema diagram for this table:
+Ideas are stored in the out-of-box **Idea** table (`idea`), which is part of the **Project Portfolio Suite with Financials** plugin. We have created a custom table called **Idea Votes** to store votes (`x_snc_idea_portal_idea_votes`). Below you can see the schema diagram for the table:
 
 ![Idea Votes Schema](images/lab-05/02-idea-votes.png)
 
 The table has 3 fields of interest:
 
-- **Name** - a reference to record the user who voted
-- **Idea** - a reference to record the idea the user voted for
-- **Voted** - a true/false field, to allow users to "un-vote" for an idea
+- **User** - a reference field, to record the user who voted.
+- **Idea** - a reference field, to record the idea the user voted for.
+- **Voted** - a true/false field, to allow users to vote and "un-vote" for an idea.
 
 ## Scripted REST API
-The ideas shown in this widget are obtained via a Scripted REST API (this has been pre-loaded onto your instance). We will also be using this to vote on ideas.
+The ideas shown in this widget are obtained via a Scripted REST API. We will also be using this to vote on ideas.
 
-Looking at line **6** of the client script...
+Looking at line **12** of the Client Script...
 
 ![Idea Votes Schema](images/lab-05/03-client-script-1.png)
 
-When the widget loads we are calling the `c.getIdeas()` function. This function takes the type of idea as a parameter.
+When the widget loads we're calling the `c.getIdeas()` function. This function takes the type of idea as a parameter.
 
 | Type         |  Ideas      |
 |---------------|-------------------------------------------|
@@ -299,30 +299,30 @@ When the widget loads we are calling the `c.getIdeas()` function. This function 
 | `my-ideas` | Only ideas which I have submitted |
 | `my-votes` | Only ideas which I have voted on |
 
-Further down the client script...
+Further down in the Client Script...
 
 ![Idea Votes Schema](images/lab-05/04-client-script-2.png)
 
-On line **67** we are making a HTTP GET request the `getideas` endpoint of the Scripted REST API, passing in `type` as a parameter. The [`$http`](https://docs.angularjs.org/api/ng/service/$http) service is built into AngularJS and is used to make [AJAX](https://developer.mozilla.org/en-US/docs/Web/Guide/AJAX) calls.
+On line **77** we are making a HTTP GET request to the `getideas` endpoint of the Scripted REST API, passing in `type` as a parameter. The [`$http`](https://docs.angularjs.org/api/ng/service/$http) service is built into AngularJS and is used to make [AJAX](https://developer.mozilla.org/en-US/docs/Web/Guide/AJAX) calls.
 
 When we get the response from the server, the function passed into `.then()` gets called, and within the function we can process an act upon the response as required.
 
 ### How it Works
-On line `74` of the client script we are logging the response from the server. Open your browser console and examine the response. It should look similar to this:
+On line **84** of the client script we are logging the response from the server. Open your browser console and examine the response. It should look similar to this:
 
 ![Idea Votes Schema](images/lab-05/05-get-response.png)
 
-We are interested in two things here. First, that the status code is `200`, which shows that the server reports that the request executed `OK`. Also, that the `result` object is an `Array` of **2** ideas. Once we get the response, the array in the result gets assigned to the `c.ideas` variable.
+We are interested in two things here. First, that the status is `200`, which shows that the server reports that the request executed `OK` (which is also listed under `statusText`). Also, that the `result` property is an `Array` of two ideas. Once we get the response, the array in the result gets assigned to the `c.ideas` variable.
 
 On line **2** of the HTML Template, we're using AngularJS' **ngRepeat** directive. This directive creates a copy of this element, and all it's child elements, for each of the items within the array passed into it (incidated by the red line).
 
-In this case we are passing in the `c.ideas` array, and telling it we want to refer to each item by the variable name `idea`.
+In this case we're passing in the `c.ideas` array, and telling it we want to refer to each item by the variable name `idea`.
 
-On lines **17** and **18** you can see we're outputting the `title` and `description` of the idea.
+On lines **17** and **18** we're outputting the `title` and `description` of the idea.
 
 ![ngRepeat](images/lab-05/06-ng-repeat.png)
 
-Lastly, on line **5** we are again using the **ngClick** directive, this time to call the function `c.vote()`. Inside this function we are making another call to the Scripted REST API, which will register that the user has voted for that item.
+Lastly, on line **5** we are again using the **ngClick** directive, this time to call the `c.vote()` function. Inside this function we are making another call to the Scripted REST API, which will register that the user has voted for that idea.
 
 ### Verify the Changes
 
@@ -330,12 +330,16 @@ Open a new tab in your browser and navigate to `/ideas` on your instance. If you
 
 ![Voted Idea](images/lab-05/07-verify.png)
 
+You should also see the idea you have voted for after clicking **My Votes**.
+
 **NOTE:** you cannot vote for your own idea.
 
 ## Record Watcher
-What happens if another user has the list of ideas open at the same time, and votes on an idea? How can we ensure the vote count is always accurate?
+What happens if another user has the list of ideas open at the same time, and votes on an idea? How can we ensure the vote count is always accurate without needing to refresh the page?
 
-**Record Watcher** is an out-of-box Service Portal functionality which allows us to watch for changes to records in a performant way. On line **15** of the client script we are registering a Record Watcher on the **Idea Votes** table. This means that whenever there is an update to a record in this table, the function passed in as the fourth parameter get called. Within this function we can then update the UI accordingly.
+**Record Watcher** is an out-of-box Service Portal functionality which allows us to watch for changes to records in a performant way. Instead of getting the users's browser to go off and repeatedly ask if there are any changes (e.g. every second, which can obviously cause performance issues), we can "subscribe" to changes to records, and the server will notify us if and when this happens.
+
+On line **16** of the client script we are registering a Record Watcher on the **Idea Votes** table. This means that whenever there is an update to a record in this table, the function passed in as the fourth parameter will get called. Within this function we can then update the UI accordingly.
 
 ### Verify the Changes
 1. Open a new tab in your browser and navigate to `/ideas` on your instance.
@@ -357,17 +361,18 @@ In the UI, the creation date isn't in a human-readable format:
 
 ![Not Human Readable](images/lab-05/08-not-human-readable.png)
 
-It would be much better if it were to say something like "created 3 days ago", which is what is sometimes referred to as "**timeago format**". Fortunately, the **Moment.js** library comes out-of-box with Service Portal. [Moment.js](https://momentjs.com/) is a very powerful library to parse, validate, and manipulate dates in JavaScript. With the help of this library, we can easily convert it to display in timeago format.
+It would be much better if it were to say something like "*created 3 days ago*", which is what is sometimes referred to as **timeago format**. Fortunately, the **Moment.js** library comes out-of-box with Service Portal. [Moment.js](https://momentjs.com/) is a very powerful library to parse, validate, and manipulate dates in JavaScript. With the help of this library, we can easily convert this date to display in timeago format.
 
 1. Open the **Idea List** widget.
-2. Comment out line **74** of the Client Script by adding two backslashes at the start of the line (`//`).
-3. Un-comment line **75** of by removing the two backslashes from the start of the line.
+
+2. Comment out line **85** of the Client Script by adding two backslashes at the start of the line (`//`).
+3. Un-comment line **86** by removing the two backslashes from the start of the line.
 
 ![Commented out](images/lab-05/09-commented-out.png)
 
 ### How it Works
 
-The `getCreatedTimeAgo()` function will now parse the response we got back from the REST API. On line **84** we are creating a `moment()` object, passing into it the creation date of an idea. We are then calling the `fromNow()` function on it to convert the date to timeago format.
+The `getCreatedTimeAgo()` function will now parse the response we got back from the REST API. On line **97** we are creating a `moment()` object, passing into it the creation date of an idea. We are then calling the `fromNow()` function on it to convert the date to timeago format.
 
 ![getCreatedTimeAgo()](images/lab-05/10-get-created-time-ago.png)
 
@@ -379,49 +384,45 @@ Open a new tab in your browser and navigate to `/ideas` on your instance. The cr
 
 ## Widget Communication (continued)
 
-On line **91** of the Client Script we are listening for the event `filterClicked`, which is broadcast by the Idea Sidebar widget. Based on the type of filter clicked, the `c.getIdeas()` function is called with the filter type.
+On line **105** of the Client Script we are listening for the event `ideaPortal.applyFilter`, which is broadcast by the Idea Sidebar widget. Based on the type of filter clicked, the `c.getIdeas()` function is then called with that filter type.
 
 ### Verify
 
-Whenever you click a link in the sidebar to filter the list of ideas you should see the log message from line **92** appear in your browser console, as shown below:
+Whenever you click a link in the sidebar to filter the list of ideas you should see the log message from line **107** appear in your browser console, as shown below:
 
 ![events fired](images/lab-05/12-events-fired.png)
 
 ## Using External Libraries
 
-It is very simple to add a third party JS/CSS library to a widget. Here in our example we will bring in a CSS library called [Animate.css](https://daneden.github.io/animate.css/).
+It's very simple to leverage a third party library in your widget. Here in our example we will use a CSS library called **Animate.css**. [Animate.css](https://daneden.github.io/animate.css) is a bunch of cool, fun, and cross-browser animations.
 
-Animate.css is a bunch of cool, fun, and cross-browser animations. Perform a Google search for **animate.css** and download the animate.css file.
+1. Download the CSS file for Animate.css [from their website](https://daneden.github.io/animate.css)
 
-![Animate css](images/lab-05/13-animate-css.png)  
+	![Animate css](images/lab-05/13-animate-css.png)  
+	
+2. Open the **Idea List** widget from Studio, then from the hamburger menu select **Open in platform**.
+3. In the **Dependencies** related list at the bottom of the page, click **New**.	
+	![Dependency Tab](images/lab-05/14-dependency-1.png)  
+	
+4. Give the Dependency a name (e.g. "*Animate.css*"), then right-click the header and choose **Save**. In the **CSS Includes** related list, click **New**.
 
-Locate and select the Idea List widget in studio. From the Hambuger icon in the upper-left, select Open in platform.
+	![Widget dependency](images/lab-05/15-dependency-2.png)
 
-Scroll to related list at the bottom of the page. Click on the **Dependencies** tab, then **new**  
+6. Give the CSS Include a name (e.g. "*Animate.css*"), then right-click the header and choose **Save**.
+7. Now, select the magnifying glass icon next to the Stylesheet field. Create a new stylesheet record by selecting the **New** button.
+8. Give the Style Sheet a name (e.g. "*Animate.css*"), and then copy and paste the contents of the downloaded animate.css file into the **CSS** field and press **Submit**. Press **Update** on the CSS Include record.
 
-![Dependency Tab](images/lab-05/14-dependency-1.png)  
-
-Give it some name, say **animate.css** (right-click header > **Save**). Now select the CSS Includes tab in related lists and click new
-
-![Widget dependency](images/lab-05/15-dependency-2.png)  
-
-Give the CSS Include record a name (e.g. animate.css) and save it (right-click header > **Save**). Now select the magnify icon next to stylesheet. Create a new stylesheet record by selecting the **New** button.
-
-![Widget dependency](images/lab-05/16-dependency-3.png)  
-
-Then copy and paste the contents of the downloaded animate.css file into the stylesheet and submit. Be sure to also select “update” on CSS Include record as well
-
-![Widget dependency stylesheet](images/lab-05/17-dependency-4.png) 
-
-Now to use animate.css animations we need to add the desired animation class to the HTML element.
-
-If you observe Lines 5 and 6 in HTML, we have classes ``animated swing`` and ``animated rubberBand`` This will animate our heart icons.
+	![Widget dependency stylesheet](images/lab-05/16-dependency-3.png)
+	
+We have already added the necessary classes to the `i` elements in the Idea List widget. You can see below that on lines **7** and **10** of the HTML Template of the widget we have the class `animated` applied to both elements. This class is what Animate.css uses to ensure it attaches to this element. We also have the and `swing` and `rubberBand` classes, which are simply the type of animation to use. A different animation will be used when voting, and "un-voting".
 
 ![HTML](images/lab-05/18-html-1.png) 
 
 ### Verify
-When you refresh the homepage and click to vote on an idea, the heart icon should show ``rubberband`` animation. When you unvote the heart should show ``swing`` animation.
 
+1. Open a new tab in your browser and navigate to `/ideas` on your instance.
+2. Vote on an idea. The `rubberBand` animation should be used.
+3. Un-vote on an idea. The `swing` animation should be used.
 
 # Lab 6: Submit an Idea Page
 
@@ -430,35 +431,40 @@ In this lab you will learn how to efficiently navigate between portal pages.
 
 ## Auto redirect on Idea submission
 
-1. Open **Idea Create** page in Page Designer.
-2. You can see this page has two OOTB widgets.
-3. Click on the pencil icon for the **SC Catalog Item Deprecated** widget.
+1. Open the **Idea Create** page in Service Portal Designer.
+
+2. This page has two widgets on it. Click on the pencil icon for the **SC Catalog Item Deprecated** widget.
 4. Make sure your widget options match the ones in the image below and save.
 
-![SC Widget Options](images/lab-06/01-sc-widget-options.png)
+	![SC Widget Options](images/lab-06/01-sc-widget-options.png)
 
 ## Navigating Between Pages Using `$location`
 
-Locate the **Idea Sidebar** widget in Studio and open. 
+1. Open a new tab in your browser and navigate to `/ideas` on your instance.
 
-![Client script](images/lab-06/02-client-script.png)
+2. Open the developer tools of your browser, and switch to the **Network** tab.
+3. Clear the history, and then click the **ADD AN IDEA** button. This will successfully navigate to a new page. Count the number of requests that were made in loading the page. There should be about **27** made.
+	![Window.location](images/lab-06/02-network-window-location.png)
+4. Open the **Idea Sidebar** widget in Studio.
+2. Comment out line **22**, and remove the comments from lines **17**, **18**, **19**, and **20**, and then save the widget.
 
-Now refresh the portal home page, open the network tab in developer tools, clear it and select the **ADD AN IDEA** button. This will successfully navigate to new page. Check the number of requests made.
+	![Client script](images/lab-06/03-client-script.png)
 
-![network tab](images/lab-06/03-network-tab-01.png)
+### Verify the Changes
+1. Open a new tab in your browser and navigate to `/ideas` on your instance.
 
-Now comment line ``15`` and uncomment lines ``11,12,13,14``. Save the widget.
+2. Open the developer tools of your browser, and switch to the **Network** tab.
+3. Clear the network logs then click the **ADD AN IDEA** button. This will successfully navigate to a new page. Count the number of requests that were made in loading the page. There may be as little as **6** requests made!
 
-Refresh portal home page, open the network tab in developer tools, clear it and click on “ADD AN IDEA” button. Check the number of requests made. 
+	![$location](images/lab-06/04-network-location-service.png)
 
-![network tab](images/lab-06/04-network-tab-02.png)
+### How it Works
 
-Using angulars ``$location`` to navigate between pages is much more efficient than using ``$window.location.href``
-
+Using AngularJS' `$location` service to navigate between pages is much more efficient than using `$window.location.href`. This is because `$window.location.href` causes the browser to do a full-page load, whereas using the `$location` service to URL parameters means only a partial load is done of only the widgets on the page and their dependencies.
 
 # Bonus Lab: Data Tables
 ## Goal
-In this lab we create a customizable banner widget by using the Data Table concept.
+In this bonus lab we will learn how to take the widget options concept even further, by adding brand new fields to our own custom Widget Instance table.
 ## Customisable Banner Widget
 // TODO
 ## Extending the `sp_instance` Table
@@ -467,15 +473,12 @@ In this lab we create a customizable banner widget by using the Data Table conce
 // TODO
 
 # Resources
-## Glossary
-// TODO
-
-
 ## Useful Links
 ### ServiceNow Resources
 - [Widget Communication](https://community.servicenow.com/community/develop/blog/2016/06/26/how-to-communicate-between-two-widgets-in-service-portal)
 
 ### Non-ServiceNow Resources
 - [Service Portal Fundamentals: AngularJS Scopes](https://www.dylanlindgren.com/2017/10/28/service-portal-fundamentals-angularjs-scopes/)
+- [One Quick Tip for Single Page Apps in Service Portal](https://www.dylanlindgren.com/2018/02/15/one-quick-tip-for-single-page-apps-in-service-portal/)
 - [Animate.css](https://daneden.github.io/animate.css/)
 - [Moment.js](https://momentjs.com/)

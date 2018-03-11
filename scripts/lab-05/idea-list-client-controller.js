@@ -12,14 +12,7 @@ function ideaListCtrl($http, $scope, glideUserSession, spUtil) {
         c.getIdeas('all');
     }
 
-    // glideUserSession is an out-of-box service that's part of Service Portal
-    // which can be used to get the current users details. For example, it can
-    // get their Sys ID or full name.
-    glideUserSession.loadCurrentUser().then(function(user) {
-        c.currentUserId = user.userID;
-    });
-
-    // Keep a lookout for new votes using Record Watcher
+    // Watch for new votes using Record Watcher
     spUtil.recordWatch($scope, votesTable, '', function(name, data) {
 
         console.log('Inside Record Watcher: ' + name);
@@ -38,7 +31,7 @@ function ideaListCtrl($http, $scope, glideUserSession, spUtil) {
                         'X-UserToken': window.g_ck
                     }
                 }).then(function(response) {
-                    ideaSysid = response.data.result[0].idea.value;
+                    ideaSysId = response.data.result[0].idea.value;
                     c.adjustVotes(ideaSysId, voteValue);
             });
         } else {
@@ -48,9 +41,21 @@ function ideaListCtrl($http, $scope, glideUserSession, spUtil) {
 
     });
 
-    //Method to capture idea votes. makes a REST call
+    //Method to adjust the vote count associated with each Idea Obj
+    c.adjustVotes = function(ideaSysId, iVoted) {
+        for (var index = 0; index < c.ideas.length; index++) {
+            if (c.ideas[index].sys_id == ideaSysId) {
+                if (iVoted)
+                    ++c.ideas[index].voteCount;
+                else
+                    --c.ideas[index].voteCount;
+            }
+        }
+    };
+
+    // Vote for an idea
     c.vote = function(idea) {
-        if (idea.openedBySysId != c.currentUserId) {
+        if (idea.openedBySysId != $scope.user.sys_id) {
             $http.get(scriptedApiEndpoint + 'voteidea?idea=' + idea.sys_id, {
                 headers: {
                     'Accept': 'application/json',
@@ -63,23 +68,11 @@ function ideaListCtrl($http, $scope, glideUserSession, spUtil) {
         }
     };
 
-    //Method to adjust the vote count associated with each Idea Obj
-    c.adjustVotes = function(ideaSysid, iVoted) {
-        for (var index = 0; index < c.ideas.length; index++) {
-            if (c.ideas[index].sys_id == ideaSysid) {
-                if (iVoted)
-                    ++c.ideas[index].voteCount;
-                else
-                    --c.ideas[index].voteCount;
-            }
-        }
-    };
-
-    // Method to get ideas from the Scripted REST API.
-    // Takes type parameter, which is the types of ideas wanted:
-    // all = All ideas
-    // my-ideas = Only ideas which I have submitted
-    // my-votes = Only ideas which I have voted on
+    // Method to get ideas from the Scripted REST API. Takes type parameter,
+    // which is the types of ideas wanted:
+    //     all = All ideas
+    //     my-ideas = Only ideas which I have submitted
+    //     my-votes = Only ideas which I have voted on
     c.getIdeas = function(type) {
         $http.get(scriptedApiEndpoint + 'getideas?type=' + type, {
             headers: {
@@ -112,7 +105,6 @@ function ideaListCtrl($http, $scope, glideUserSession, spUtil) {
     $scope.$on('ideaPortal.applyFilter', function(event, data) {
 
         console.log('Event caught type is: ' + data);
-
         c.getIdeas(data);
     });
 }
