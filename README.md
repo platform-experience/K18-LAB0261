@@ -400,8 +400,9 @@ It's very simple to leverage a third party library in your widget. Here in our e
 
 	![Animate css](images/lab-05/13-animate-css.png)  
 	
-2. Open the **Idea List** widget from Studio, then from the hamburger menu select **Open in platform**.
+2. Open the **Idea List** widget in Studio, then from the hamburger menu select **Open in platform**.
 3. In the **Dependencies** related list at the bottom of the page, click **New**.	
+
 	![Dependency Tab](images/lab-05/14-dependency-1.png)  
 	
 4. Give the Dependency a name (e.g. "*Animate.css*"), then right-click the header and choose **Save**. In the **CSS Includes** related list, click **New**.
@@ -466,11 +467,79 @@ Using AngularJS' `$location` service to navigate between pages is much more effi
 ## Goal
 In this bonus lab we will learn how to take the widget options concept even further, by adding brand new fields to our own custom Widget Instance table.
 ## Customisable Banner Widget
-// TODO
-## Extending the `sp_instance` Table
-// TODO
+1. Open the **Idea Banner** widget in Studio, then from the hamburger menu select **Open in platform**.
+2. Change the **Data table** field to point to the **Instance of Banner** table.
+3. In the **Fields** field, add the following:
+	- Background image
+	- Align image
+	- Heading
+	- Heading text color
+4. Clear the **Options schema** field and press the **Update** UI Action.
+5. Open the **Idea Home** page in Service Portal Designer.
+6. Delete the **Idea Banner** widget from the page, and then drag it back on so that it's in the same container.
+7. Open the widget instance options by hovering over the widget and clicking the pencil icon. Fill out the options as follows:
+
+	| Field         | Value                                 |
+	|---------------|-------------------------------------------|
+	| Background image        | *Download [idea-banner.jpg](resources/bonus-lab/idea-banner.jpg) and upload it to this field* |
+	| Align image | center |
+	| Heading | welcome to the ServiceNow Idea Portal |
+	| Heading text colour | #d9534f |
+	
+	Note that the **Background image** and **Heading text color** are both field types which are not available from regular widget options. How did we do this? More on that later.
+	
+8. Click **Save**
+	
 ### Verify the Changes
-// TODO
+1. Open a new tab in your browser and navigate to `/ideas` on your instance.
+
+	![$location](images/bonus-lab/01-verify.png)
+	
+### How it Works
+
+All widgets have a **Data table** field which by default points to the `sp_instance` table. Instead of using this default table, you can create a new table (extended from `sp_instance`) and it will be available for you to have your widgets point to this table.
+
+The advantages of using a custom table to drive your widgets instead of the option schema are as follows.
+
+- Field types can be any type available for a `sys_metadata` table, as opposed to the limited field types available in option schema.
+- The widget's options dialog will use any UI Policies applied to the custom table.
+-  You can configure the form layout, and what order the fields appear in.
+
+When you drag and drop a widget onto a page using Service Portal Designer, a new widget instance record is created in the table selected as your widget's data table. 
+
+There are many fields available on the default `sp_instance` table, but there may be cases where you want some different fields than those available on this table e.g. a script field. In this case you would create a new table extended from `sp_instance`, and add a script field to it.
+
+## Extending the `sp_instance` Table
+Let's add a few more fields to our custom widget instance table.
+
+1. From Studio, open the **Instance of Banner** table.
+
+2. Add the below two columns to the table, and then click **Update**.
+
+	| Name         | Max length                                 |
+	|---------------|-------------------------------------------|
+	| Sub heading        | 40 |
+	| Sub heading text color | 200 |
+	
+3. In Studio, open the form layout for the **Instance of Banner** table, in the **SP Instance Config** view.
+4. Add the two new columns we created to the view under the **Presentation** section, then click **Save**.
+5. Open the **Idea Banner** widget in Studio and add the two new columns we created to the **Fields** field's slushbucket, and click the **Update** UI Action.
+6. Open the **Idea Home** page in Service Portal Designer, and open the widget options for the banner.
+7. Set the new fields to have the below values:
+
+	| Field         | Value                                 |
+	|---------------|-------------------------------------------|
+	| Sub heading        | We love hearing from our employees. Please share your ideas here. |
+	| Sub heading text color | #fff |
+
+### Verify the Changes
+Open a new tab in your browser and navigate to `/ideas` on your instance.
+
+// TODO: IMAGE
+
+The new fields on the table we created can be accessed the same way any other options are accessed, in the format `c.options.COLUMN_NAME`.
+
+// TODO: IMAGE
 
 # Resources
 ## Useful Links
