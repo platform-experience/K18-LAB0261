@@ -14,6 +14,11 @@ For instructions on installing update sets, see the [ServiceNow Documentation si
 
 That's it! You're now all set to begin the lab!
 
+
+# Sneak Peak
+
+![Sneak Peak](images/idea_portal.gif)
+
 # Lab 1: The Portal Record
 ## Goal
 In this lab you will learn how to configure portals and customise the theme applied to them.
