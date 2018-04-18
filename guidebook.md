@@ -13,8 +13,8 @@ Below you can see a preview animation of the portal we will be building:
 This lab requires that your instance is running the **Kingston** release of ServiceNow.
 
 1. Activate the **Project Portfolio Suite with Financials** plugin **without demo data**.
-2. Download and install the [global update set](resources/update-sets/01global.xml).
-3. Download and install the [scoped update set](resources/update-sets/02scoped.xml), or fork and import the [application in GitHub](https://github.com/sush-chandrashekar/idea-portal-envelope).
+2. Download and install the [global update set](resources/update-sets/01-idea-portal-global-update-set.xml).
+3. Download and install the [scoped update set](resources/update-sets/02-idea-portal-scoped-update-set.xml), or fork and import the [application in GitHub](https://github.com/sush-chandrashekar/idea-portal-envelope).
 
 For instructions on installing update sets, see the [ServiceNow Documentation site](https://docs.servicenow.com/bundle/istanbul-application-development/page/build/system-update-sets/task/t_LoadCustomizationsFromAnXMLFile.html).
 
