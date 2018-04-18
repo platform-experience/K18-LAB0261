@@ -1,4 +1,10 @@
 # Introduction
+## Goal
+Imagine if building powerful experiences was as easy as building a website. This session will give you an overview of the ServiceNow Service Portal framework and how to manage the flow of content for an optimized user experience using out of the box and customizable widgets.
+
+Below you can see a preview animation of the portal we will be building:
+
+// TODO: IMAGE
 
 ## Instance Preparation
 
@@ -13,11 +19,6 @@ This lab requires that your instance is running the **Kingston** release of Serv
 For instructions on installing update sets, see the [ServiceNow Documentation site](https://docs.servicenow.com/bundle/istanbul-application-development/page/build/system-update-sets/task/t_LoadCustomizationsFromAnXMLFile.html).
 
 That's it! You're now all set to begin the lab!
-
-
-# Sneak Peak
-
-![Sneak Peak](images/idea_portal.gif)
 
 # Lab 1: The Portal Record
 ## Goal
