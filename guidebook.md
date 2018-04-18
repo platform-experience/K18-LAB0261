@@ -22,7 +22,7 @@ That's it! You're now all set to begin the lab!
 
 # Lab 1: The Portal Record
 ## Goal
-In this lab you will learn how to configure portals and customise the theme applied to them.
+In this lab you will learn how to configure portals and customise their theme.
 
 ## Create the Portal
 1.	Open your web browser and navigate to the URL of your instance.
@@ -30,10 +30,11 @@ In this lab you will learn how to configure portals and customise the theme appl
 2. Login as an administrator (e.g. `admin`).
 3.	In the application navigator, search for and open **Studio**, and pick the **Idea Portal** application.
 4. In Studio, under the **Service Portals** heading, click on **Idea Portal**.
-5. Notice the **URL Suffix** to access this portal is `ideas`.
+
+	Notice the **URL Suffix** to access this portal is `ideas`.
 6.	Download **[`logo-rev.png`](resources/lab-01/logo-rev.png)**, upload it to the **Logo** field, and press **Save**.
 7.	This portal is associated with the **Idea Portal** theme. Click on the ![Information](images/lab-01/01-theme.png) icon next to the **Theme** field to open the record.
-8. Update the Idea Portal record to have the values below, then press **Save**:
+8. Update the Idea Portal theme record to have the values below, then press **Save**.
 
 	| Field         | New Value                                 |
 	|---------------|-------------------------------------------|
@@ -100,7 +101,7 @@ Open a browser which you're not logged into (or an "incognito" window) and navig
 
 	![HTML Instance Options](images/lab-02/05-html-options.png)
 	
-	You might be thinking, what are the dollar signs and curly braces around the text doing? These are related to [internationalization](https://docs.servicenow.com/bundle/jakarta-servicenow-platform/page/build/service-portal/concept/c_WidgetLocalization.html). If the user visiting the portal is using another language, this text can be automatically replaced with a translation from the `sys_ui_messages` table.
+	You might be wondering what the dollar signs and curly braces are doing around the text. These are related to [internationalization](https://docs.servicenow.com/bundle/jakarta-servicenow-platform/page/build/service-portal/concept/c_WidgetLocalization.html). If the user visiting the portal is using another language, this text can be automatically replaced with a translation of that phrase from the `sys_ui_messages` table.
 	
 
 ### Verify the Changes
@@ -162,7 +163,7 @@ In this lab we will learn how to create widgets that are customizable.
 	| Label        | Sub Heading |
 	| Name | sub_heading |
 	| Type | string |
-	| Form section | Presentation |
+	| Form section | Data |
 	
 	| Field         | Value                                 |
 	|---------------|-------------------------------------------|

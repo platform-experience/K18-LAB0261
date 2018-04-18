@@ -1,13 +1,14 @@
-[{
+[
+{
     "name": "background_image",
-    "section": "other",
+    "section": "Presentation",
     "default_value": "search-bg.png",
     "label": "Background Image",
     "type": "string"
 },
 {
     "name": "align_image",
-    "section": "other",
+    "section": "Presentation",
     "label": "Align Image",
     "type": "choice",
     "choices": [
@@ -34,13 +35,13 @@
 },
 {
     "name": "heading",
-    "section": "other",
+    "section": "Data",
     "label": "Heading",
     "type": "string"
 },
 {
     "name": "heading_text_color",
-    "section": "other",
+    "section": "Presentation",
     "label": "Heading Text Color",
     "type": "string"
 }]
