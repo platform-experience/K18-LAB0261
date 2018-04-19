@@ -232,7 +232,9 @@ Open a new tab in your browser and navigate to `/ideas` on your instance. Open t
 
 # Lab 5: List Widget
 ## Goal
-In this lab we will learn how to use a widget to display data, and how to retrieve updated data. We will also learn how to use external libraries within your widget to add extra functionality to them withought having to develop this functionality from scratch.
+In this lab we will learn how to use a widget to display data, and how to retrieve updated data.
+
+We will also learn how to use external libraries within your widget to add extra functionality to them withought having to develop this functionality from scratch.
 
 ## Create the Widget
 1. In Studio, click **Create Application File**, search for and choose **Widget**, and click **Create**.
