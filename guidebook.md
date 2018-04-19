@@ -407,7 +407,7 @@ It's very simple to leverage a third party library in your widget. Here in our e
 
 	![Widget dependency stylesheet](images/lab-05/16-dependency-3.png)
 	
-We have already added the necessary classes to the `i` elements in the Idea List widget. You can see below that on lines **7** and **10** of the HTML Template of the widget we have the class `animated` applied to both elements. This class is what Animate.css uses to ensure it attaches to this element. We also have the and `swing` and `rubberBand` classes, which are simply the type of animation to use. A different animation will be used when voting, and "un-voting".
+We have already added the necessary classes to the `i` elements in the Idea List widget. You can see below that on lines **7** and **10** of the HTML Template of the widget we have the class `animated` applied to both elements. This class is what Animate.css uses to ensure it attaches to this element. We also have the and `swing` and `rubberBand` classes, which are simply the type of animation to use. A different animation will be used when voting, and un-voting.
 
 ![HTML](images/lab-05/18-html-1.png) 
 
