@@ -189,6 +189,8 @@ In this lab we will learn how to create widgets which control the behaviour of o
 	- [CSS - SCSS](scripts/lab-04/idea-sidebar-css.scss.txt)
 	- [Client Script](scripts/lab-04/idea-sidebar-client-controller.js.txt)
 
+	**NOTE:** if you can't see the **CSS - SCSS** field, ensure the box to display it is ticked at the top of the widget editor.
+
 4. Now, open the **Idea Home** page in Service Portal Designer, and drag and drop the new **Idea Sidebar** widget we've created into the **3** column area of the second container.
 
 	**NOTE:** if you can't find the widget in Service Portal Designer you may need to refresh the page.
