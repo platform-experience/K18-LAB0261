@@ -1,10 +1,6 @@
 ## Configuring an Engaging Service Portal
 Imagine if building powerful experiences was as easy as building a website. This session will give you an overview of the ServiceNow Service Portal framework and how to manage the flow of content for an optimized user experience using out of the box and customizable widgets.
 
-Below you can see a preview animation of the portal we will be building:
-
-// TODO: IMAGE
-
 ## Instance Preparation
 
 **NOTE:** If you're following this lab in a ServiceNow-run session, on an instance provided to you for the lab, no preparation steps are necessary. The below steps have already been performed for you.
