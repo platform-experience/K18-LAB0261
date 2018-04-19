@@ -17,7 +17,7 @@ In this lab you will learn how to configure portals and customise their theme.
 	| Field         | New Value                                 |
 	|---------------|-------------------------------------------|
 	| Header        | Stock Header *(we will use the OOB header)* |
-	| CSS Variables | *Contents of [theme.css](scripts/lab-01/theme.css)*|
+	| CSS Variables | *Contents of [theme.css](scripts/lab-01/theme.css.txt)*|
 
 # Lab 2: Cloning and Creating Pages
 ## Goal
@@ -113,11 +113,11 @@ In this lab we will learn how to create widgets that are customizable.
 
 2. Click the hamburger menu at the top-right corner of the widget editor (![Hamburger Menu](images/lab-03/01-hamburger.png)), and click **Open in platform**
 3. There's quite a bit of code that makes up this widget, so for convenience you can copy and paste the code into the corresponding fields from the below links. After doing so, press the **Update** button to save the record.
-	- [Body HTML template](scripts/lab-03/banner-body-html-template.html)
-	- [CSS](scripts/lab-03/banner-css.scss)
-	- [Server script](scripts/lab-03/banner-server-script.js)
-	- [Client controller](scripts/lab-03/banner-client-controller.js)
-	- [Option schema](scripts/lab-03/banner-option-schema.json)
+	- [Body HTML template](scripts/lab-03/banner-body-html-template.html.txt)
+	- [CSS](scripts/lab-03/banner-css.scss.txt)
+	- [Server script](scripts/lab-03/banner-server-script.js.txt)
+	- [Client controller](scripts/lab-03/banner-client-controller.js.txt)
+	- [Option schema](scripts/lab-03/banner-option-schema.json.txt)
 
 4. Let's add this widget to our home page. In Studio, click on **Idea Home** (under **Service Portal** ► **Service Portal Pages**).
 5. In the window that opens, click the **Edit Idea Home (idea_home) page in Designer** link.
@@ -185,9 +185,9 @@ In this lab we will learn how to create widgets which control the behaviour of o
 	| Widget ID | idea-sidebar |
 	
 3. There's quite a bit of code that makes up this widget, so you can copy and paste the code into the corresponding fields from the below links, then save the record:
-	- [HTML template](scripts/lab-04/idea-sidebar-body-html-template.html)
-	- [CSS - SCSS](scripts/lab-04/idea-sidebar-css.scss)
-	- [Client Script](scripts/lab-04/idea-sidebar-client-controller.js)
+	- [HTML template](scripts/lab-04/idea-sidebar-body-html-template.html.txt)
+	- [CSS - SCSS](scripts/lab-04/idea-sidebar-css.scss.txt)
+	- [Client Script](scripts/lab-04/idea-sidebar-client-controller.js.txt)
 
 4. Now, open the **Idea Home** page in Service Portal Designer, and drag and drop the new **Idea Sidebar** widget we've created into the **3** column area of the second container.
 
@@ -243,9 +243,9 @@ In this lab we will learn how to use a widget to display data, and how to retrie
 	| Widget ID | idea-list |
 	
 3. There's quite a bit of code that makes up this widget, so you can copy and paste the code into the corresponding fields from the below links, then save the record:
-	- [Body HTML template](scripts/lab-05/idea-list-body-html-template.html)
-	- [CSS](scripts/lab-05/idea-list-css.scss)
-	- [Client controller](scripts/lab-05/idea-list-client-controller.js)
+	- [Body HTML template](scripts/lab-05/idea-list-body-html-template.html.txt)
+	- [CSS](scripts/lab-05/idea-list-css.scss.txt)
+	- [Client controller](scripts/lab-05/idea-list-client-controller.js.txt)
 
 4. Now, open the **Idea Home** page in Service Portal Designer, and drag and drop the new **Idea List** widget we've created into the **9** column area of the second container.
 
