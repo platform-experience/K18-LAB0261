@@ -15,8 +15,8 @@ function IdeaSidebarCtrl($location, $scope, $rootScope, $window) {
         var RpId = 'df823500dba30f0094407f6bbf961917';
 
         // $location.search({
-        //     id: ideaPage,
-        //     sys_id: ideaRpId
+        //     id: PageName,
+        //     sys_id: RpId
         // });
         
         $window.location.href = '/ideas?id=' + PageName + '&sys_id=' + RpId;

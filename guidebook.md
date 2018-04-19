@@ -438,8 +438,8 @@ In this lab you will learn how to efficiently navigate between portal pages.
 2. Open the developer tools of your browser, and switch to the **Network** tab.
 3. Clear the history, and then click the **ADD AN IDEA** button. This will successfully navigate to a new page. Count the number of requests that were made in loading the page. There should be about **27** made.
 	![Window.location](images/lab-06/02-network-window-location.png)
-4. Open the **Idea Sidebar** widget in Studio.
-2. Comment out line **22**, and remove the comments from lines **17**, **18**, **19**, and **20**, and then save the widget.
+4. Open the **Idea Sidebar** widget in widget editor.
+2. In the Client Script, comment out line **22**, and remove the comments from lines **17**, **18**, **19**, and **20**, and then save the widget.
 
 	![Client script](images/lab-06/03-client-script.png)
 
