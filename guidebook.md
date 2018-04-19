@@ -126,9 +126,9 @@ In this lab we will learn how to create widgets that are customizable.
 
 	| Option         | Value                                 |
 	|---------------|-------------------------------------------|
+	| Heading | Welcome to the ServiceNow Ideation Portal |
 	| Background Image        | idea-banner.jpg |
 	| Align Image | center |
-	| Heading | Welcome to the ServiceNow Ideation Portal |
 	| Heading Text Color | #d9534f |
 
 8. Let's add a few more options for this widget. Click on the **Idea Banner** widget in Studio, click on the hamburger menu again, but this time click **Edit option schema**.
