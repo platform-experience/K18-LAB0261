@@ -303,7 +303,7 @@ On line **84** of the client script we are logging the response from the server.
 
 We are interested in two things here. First, that the status is `200`, which shows that the server reports that the request executed `OK` (which is also listed under `statusText`). Also, that the `result` property is an `Array` of two ideas. Once we get the response, the array in the result gets assigned to the `c.ideas` variable.
 
-On line **2** of the HTML Template, we're using AngularJS' **ngRepeat** directive. This directive creates a copy of this element, and all it's child elements, for each of the items within the array passed into it (incidated by the red line).
+On line **2** of the HTML Template, we're using AngularJS' **ngRepeat** directive. This directive creates a copy of this element, and all it's child elements, for each of the items within the array passed into it (indicated by the red line).
 
 In this case we're passing in the `c.ideas` array, and telling it we want to refer to each item by the variable name `idea`.
 
