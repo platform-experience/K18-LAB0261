@@ -167,7 +167,7 @@ Click on the **Idea Banner** widget in Studio, and refer to the **HTML Template*
 
 	![Hamburger Menu](images/lab-03/02-html-template-options.png)
 
-- On lines **5** and **8**, we are attaching the ngStyle directive to the `div` by using the attribute `ng-style`. As a value for this attribute, we are using an in-line JSON object which directly refers to the widget options. This is setting the color of the text to be whatever value is stored in that option.
+- On lines **5** and **8**, we are attaching the ngStyle directive to the element by using the attribute `ng-style`. As a value for this attribute, we are using an in-line JSON object which directly refers to the widget options. This is setting the color of the text to be whatever value is stored in that option.
 - On line **2** of the HTML, we are using the same attribute `ng-style`, but instead of having the JSON object inline we are calling the function `c.getPictureStyle()`. This function returns the JSON object, which saves us from having to have it in-line (it could get quite lengthy!).
 
 # Lab 4: Sidebar Widget
