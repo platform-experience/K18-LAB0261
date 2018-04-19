@@ -476,7 +476,7 @@ In this bonus lab we will learn how to take the widget options concept even furt
 	| Background image        | *Download [idea-banner.png](resources/bonus-lab/idea-banner.png) and upload it to this field* |
 	| Align image | center |
 	| Heading | welcome to the ServiceNow Idea Portal |
-	| Heading text colour | #d9534f |
+	| Heading text color | #d9534f |
 	
 	Note that the **Background image** and **Heading text color** are both field types which are not available from regular widget options. How did we do this? More on that later.
 	
