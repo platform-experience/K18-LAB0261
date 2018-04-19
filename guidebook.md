@@ -326,9 +326,9 @@ You should also see the idea you have voted for after clicking **My Votes**.
 ## Record Watcher
 What happens if another user has the list of ideas open at the same time, and votes on an idea? How can we ensure the vote count is always accurate without needing to refresh the page?
 
-**Record Watcher** is an out-of-box Service Portal functionality which allows us to watch for changes to records in a performant way. Instead of getting the users's browser to go off and repeatedly ask if there are any changes (e.g. every second, which can obviously cause performance issues), we can "subscribe" to changes to records, and the server will notify us if and when this happens.
+**Record Watcher** is an out-of-box Service Portal functionality which allows us to watch for changes to records in a performant way. Instead of getting the users's browser to go off and repeatedly ask if there are any changes (e.g. every second, which may cause performance issues), we can "subscribe" to changes to records, and the server will notify us if and when this happens.
 
-On line **16** of the client script we are registering a Record Watcher on the **Idea Votes** table. This means that whenever there is an update to a record in this table, the function passed in as the fourth parameter will get called. Within this function we can then update the UI accordingly.
+On line **16** of the client script we are registering a Record Watcher on the **Vote** table. This means that whenever there is an update to a record in this table, the function passed in as the fourth parameter will get called. Within this function we can then update the UI accordingly.
 
 ### Verify the Changes
 1. Open a new tab in your browser and navigate to `/ideas` on your instance.
