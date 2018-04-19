@@ -211,9 +211,9 @@ Looking at the code in the HTML template of the widget:
 
 ![HTML Template](images/lab-04/03-html-template.png)
 
--	On line **3** we have bound the **ngClick** directive to the `button` element using the `ng-click` attribute. This directive simply executes the expression in the value of the attribute. In this case, we are telling it to call the `c.submitIdea()` function.
+-	On line **3** we have bound the **ngClick** directive to the `button` element using the `ng-click` attribute. This directive simply executes the expression in the value of the attribute when the element is clicked. In this case, we are telling it to call the `c.submitIdea()` function when this happens.
 
-- The three `a` elements are links which will act as filters for the Idea List widget we will build in lab 5. Again, we are using the **ngClick** directive on each of these elements to call a function, this time `c.applyFilter()`. We are passing it a parameter so that the function can update `c.selectedFilter`.
+- The three `a` elements are links which will act as filters for the Idea List widget we will build in lab 5. Again, we are using the **ngClick** directive on each of these elements to call a function when they are clicked, this time the `c.applyFilter()` function. We are passing it a parameter so that the function can update `c.selectedFilter`.
 
 - We are also using the **ngClass** directive on these elements, which attaches CSS classes to an element if the expression returns `true`. If the current value of `c.selectedFilter` is the one related to this link, the `active` class will be added to it, allowing us to add styling to it to appear selected.
 
