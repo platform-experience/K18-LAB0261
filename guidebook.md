@@ -478,7 +478,7 @@ In this bonus lab we will learn how to take the widget options concept even furt
 	| Heading | welcome to the ServiceNow Idea Portal |
 	| Heading text color | #d9534f |
 	
-	Note that the **Background image** and **Heading text color** are both field types which are not available from regular widget options. How did we do this? More on that later.
+	Note that the **Background image** has a field type which is not available from regular widget options. How did we do this? More on that later.
 	
 8. Click **Save**
 	
