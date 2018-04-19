@@ -261,9 +261,9 @@ Open a new tab in your browser and navigate to `/ideas` on your instance. You sh
 
 ![Verify](images/lab-05/01-verify.png)
 
-## The Idea Votes Table
+## The Votes Table
 
-Ideas are stored in the out-of-box **Idea** table (`idea`), which is part of the **Project Portfolio Suite with Financials** plugin. We have created a custom table called **Idea Votes** to store votes (`x_snc_idea_portal_idea_votes`). Below you can see the schema diagram for the table:
+Ideas are stored in the out-of-box **Idea** table (`idea`), which is part of the **Project Portfolio Suite with Financials** plugin. We have created a custom table called **Vote** to store votes (`x_snc_idea_portal_vote`). Below you can see the schema diagram for the table:
 
 ![Idea Votes Schema](images/lab-05/02-idea-votes.png)
 
