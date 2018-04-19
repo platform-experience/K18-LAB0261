@@ -483,7 +483,7 @@ In this bonus lab we will learn how to take the widget options concept even furt
 8. Click **Save**
 	
 ### Verify the Changes
-1. Open a new tab in your browser and navigate to `/ideas` on your instance.
+1. Open a new tab in your browser and navigate to `/ideas` on your instance. You should see the below page.
 
 	![$location](images/bonus-lab/01-verify.png)
 	
