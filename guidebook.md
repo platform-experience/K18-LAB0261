@@ -10,7 +10,7 @@ In this lab you will learn how to configure portals and customise their theme.
 4. In Studio, under the **Service Portals** heading, click on **Idea Portal**.
 
 	Notice the **URL Suffix** to access this portal is `ideas`.
-6.	Download **[`logo-rev.png`](resources/lab-01/logo-rev.png)**, upload it to the **Logo** field, and press **Save**.
+6.	Download **`logo-rev.png`** ([link](resources/lab-01/logo-rev.png)), upload it to the **Logo** field, and press **Save**.
 7.	This portal is associated with the **Idea Portal** theme. Click on the ![Information](images/lab-01/01-theme.png) icon next to the **Theme** field to open the record.
 8. Update the Idea Portal theme record to have the values below, then press **Save**.
 
