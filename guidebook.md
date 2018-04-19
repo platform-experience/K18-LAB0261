@@ -352,7 +352,7 @@ In the UI, the creation date isn't in a human-readable format:
 
 It would be much better if it were to say something like "*created 3 days ago*", which is what is sometimes referred to as **timeago format**. Fortunately, the **Moment.js** library comes out-of-box with Service Portal. [Moment.js](https://momentjs.com/) is a very powerful library to parse, validate, and manipulate dates in JavaScript. With the help of this library, we can easily convert this date to display in timeago format.
 
-1. Open the **Idea List** widget in widget editor.
+1. Open the **Idea List** widget in Studio.
 
 2. Comment out line **85** of the Client Script by adding two backslashes at the start of the line (`//`).
 3. Un-comment line **86** by removing the two backslashes from the start of the line.
