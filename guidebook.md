@@ -473,7 +473,7 @@ In this bonus lab we will learn how to take the widget options concept even furt
 
 	| Field         | Value                                 |
 	|---------------|-------------------------------------------|
-	| Background image        | *Download [idea-banner.png](resources/bonus-lab/idea-banner.png) and upload it to this field* |
+	| Background image        | *Download [idea-banner.png](resources/lab-bonus/idea-banner.png) and upload it to this field* |
 	| Align image | center |
 	| Heading | welcome to the ServiceNow Idea Portal |
 	| Heading text color | #d9534f |
@@ -485,7 +485,7 @@ In this bonus lab we will learn how to take the widget options concept even furt
 ### Verify the Changes
 1. Open a new tab in your browser and navigate to `/ideas` on your instance. You should see the below page.
 
-	![$location](images/bonus-lab/01-verify.png)
+	![$location](images/lab-bonus/01-verify.png)
 	
 ### How it Works
 
@@ -510,12 +510,14 @@ Let's add a few more fields to our custom widget instance table.
 
 	| Name         | Max length                                 |
 	|---------------|-------------------------------------------|
-	| Sub heading        | 40 |
-	| Sub heading text color | 200 |
+	| Sub heading        | 200 |
+	| Sub heading text color | 20 |
 	
 3. In Studio, open the form layout for the **Instance of Banner** table, in the **SP Instance Config** view.
 4. Add the two new columns we created to the view under the **Presentation** section, then click **Save**.
-5. Open the **Idea Banner** widget in Studio and add the two new columns we created to the **Fields** field's slushbucket, and click the **Update** UI Action.
+5. Find the **Idea Banner** widget in Studio, and open it.
+6. Click the hamburger menu at the top-right corner of the widget editor, and click **Open in platform**
+6. Add the two new columns we created to the **Fields** field's slushbucket, and click the **Update** UI Action.
 6. Open the **Idea Home** page in Service Portal Designer, and open the widget options for the banner.
 7. Set the new fields to have the below values:
 
@@ -527,11 +529,9 @@ Let's add a few more fields to our custom widget instance table.
 ### Verify the Changes
 Open a new tab in your browser and navigate to `/ideas` on your instance.
 
-// TODO: IMAGE
+![$location](images/lab-bonus/02-verify.png)
 
-The new fields on the table we created can be accessed the same way any other options are accessed, in the format `c.options.COLUMN_NAME`.
-
-// TODO: IMAGE
+The new fields on the table we created can be accessed the same way as normal widget options are accessed, in the format `c.options.COLUMN_NAME`.
 
 # Resources
 ## Useful Links
