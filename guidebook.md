@@ -453,7 +453,7 @@ In this lab you will learn how to efficiently navigate between portal pages.
 
 ### How it Works
 
-Using AngularJS' `$location` service to navigate between pages is much more efficient than using `$window.location.href`. This is because `$window.location.href` causes the browser to do a full-page load, whereas using the `$location` service to URL parameters means only a partial load is done of only the widgets on the page and their dependencies.
+Using the AngularJS `$location` service to navigate between pages is much more efficient than using `$window.location.href`. This is because `$window.location.href` causes the browser to do a full-page load, whereas using the `$location` service to change URL parameters means only a partial load is done of only the widgets on the page and their dependencies.
 
 # Bonus Lab: Data Tables
 ## Goal
