@@ -356,9 +356,11 @@ It would be much better if it were to say something like "*created 3 days ago*",
 
 2. Comment out line **85** of the Client Script by adding two backslashes at the start of the line (`//`).
 3. Un-comment line **86** by removing the two backslashes from the start of the line.
-4. Save the widget
 
-![Commented out](images/lab-05/09-commented-out.png)
+	The code should now look as shown below.
+	
+	![Commented out](images/lab-05/09-commented-out.png)
+4. Save the widget.
 
 ### How it Works
 
