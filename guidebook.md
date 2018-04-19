@@ -403,7 +403,7 @@ It's very simple to leverage a third party library in your widget. Here in our e
 
 6. Give the CSS Include a name (e.g. "*Animate.css*"), then right-click the header and choose **Save**.
 7. Now, select the magnifying glass icon next to the Stylesheet field. Create a new stylesheet record by selecting the **New** button.
-8. Give the Style Sheet a name (e.g. "*Animate.css*"), and then copy and paste the contents of the downloaded animate.css file into the **CSS** field and press **Submit**. Press **Update** on the CSS Include record.
+8. Give the Style Sheet a name (e.g. "*Animate.css*"), and then copy and paste the contents of the downloaded `animate.css` file into the **CSS** field and press **Submit**. Press **Update** on the CSS Include record.
 
 	![Widget dependency stylesheet](images/lab-05/16-dependency-3.png)
 	
