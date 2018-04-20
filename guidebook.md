@@ -333,15 +333,11 @@ On line **16** of the client script we are registering a Record Watcher on the *
 ### Verify the Changes
 1. Open a new tab in your browser and navigate to `/ideas` on your instance.
 
-2. Open a browser which you're not logged into (or an "incognito" window) and navigate to `/ideas` on your instance.
-3. At the login screen in the incognito window, login as the below user:
-
-	| Username         |  Password      |
-	|---------------|-------------------------------------------|
-	| `bessie.sutton`  | `bessie` |
-	
-4. Vote on an idea.
-5. The vote count should increment automatically, even in your original window from step 1.
+2. Open another browser which you're not logged into (or an "incognito" window) and log onto your instance again as `admin`. In this browser:
+	1. Impersonate user "Fred Luddy".
+	2. Navigate to `/ideas`.
+	3. Vote on an idea.
+3. The vote count should now have incremented in the browser used in both step 1 and 2, even without refreshing the page!
 
 
 ## Moment.js
