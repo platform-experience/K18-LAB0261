@@ -1,6 +1,6 @@
-# Lab 1: The Portal Record
+# Exercise 1: The Portal Record
 ## Goal
-In this lab you will learn how to configure portals and customise their theme.
+In this exercise you will learn how to configure portals and customise their theme.
 
 ## Create the Portal
 1.	Open your web browser and navigate to the URL of your instance.
@@ -19,9 +19,9 @@ In this lab you will learn how to configure portals and customise their theme.
 	| Header        | Stock Header *(we will use the OOB header)* |
 	| CSS Variables | *Contents of [theme.css](scripts/lab-01/theme.css.txt)*|
 
-# Lab 2: Cloning and Creating Pages
+# Exercise 2: Cloning and Creating Pages
 ## Goal
-In this lab we will create a login page for our portal, and the home page which will allow users to view and vote on ideas.
+In this exercise we will create a login page for our portal, and the home page which will allow users to view and vote on ideas.
 
 ## Cloning Existing Pages
 1. In the application navigator, search for **Pages**, and open the result under the **Service Portal** application.
@@ -104,9 +104,9 @@ Open a browser which you're not logged into (or an "incognito" window) and navig
 6. Back in Studio, open the **Idea Portal** record again (under **Service Portal** ► **Service Portals**).
 7. As the **Homepage**, select `idea_home` and press **Save**.
 
-# Lab 3: Banner Widget
+# Exercise 3: Banner Widget
 ## Goal
-In this lab we will learn how to create widgets that are customizable.
+In this exercise we will learn how to create widgets that are customizable.
 
 ## Banner Widget
 1. For convenience, we have included the **Idea Banner** widget on your instance, but it's empty. Find this widget in Studio, and open it.
@@ -170,9 +170,9 @@ Click on the **Idea Banner** widget in Studio, and refer to the **HTML Template*
 - On lines **5** and **8**, we are attaching the ngStyle directive to the element by using the attribute `ng-style`. As a value for this attribute, we are using an in-line JSON object which directly refers to the widget options. This is setting the color of the text to be whatever value is stored in that option.
 - On line **2** of the HTML, we are using the same attribute `ng-style`, but instead of having the JSON object inline we are calling the function `c.getPictureStyle()`. This function returns the JSON object, which saves us from having to have it in-line (it could get quite lengthy!).
 
-# Lab 4: Sidebar Widget
+# Exercise 4: Sidebar Widget
 ## Goal
-In this lab we will learn how to create widgets which control the behaviour of other widgets.
+In this exercise we will learn how to create widgets which control the behaviour of other widgets.
 
 ## Creating Widgets
 1. In Studio, click **Create Application File**, search for and choose **Widget**, and click **Create**.
@@ -213,7 +213,7 @@ Looking at the code in the HTML template of the widget:
 
 -	On line **3** we have bound the **ngClick** directive to the `button` element using the `ng-click` attribute. This directive simply executes the expression in the value of the attribute when the element is clicked. In this case, we are telling it to call the `c.submitIdea()` function when this happens.
 
-- The three `a` elements are links which will act as filters for the Idea List widget we will build in lab 5. Again, we are using the **ngClick** directive on each of these elements to call a function when they are clicked, this time the `c.applyFilter()` function. We are passing it a parameter so that the function can update `c.selectedFilter`.
+- The three `a` elements are links which will act as filters for the Idea List widget we will build in exercise 5. Again, we are using the **ngClick** directive on each of these elements to call a function when they are clicked, this time the `c.applyFilter()` function. We are passing it a parameter so that the function can update `c.selectedFilter`.
 
 - We are also using the **ngClass** directive on these elements, which attaches CSS classes to an element if the expression returns `true`. If the current value of `c.selectedFilter` is the one related to this link, the `active` class will be added to it, allowing us to add styling to it to appear selected.
 
@@ -230,9 +230,9 @@ Open a new tab in your browser and navigate to `/ideas` on your instance. Open t
 
 ![Console logs](images/lab-04/05-verify.png)
 
-# Lab 5: List Widget
+# Exercise 5: List Widget
 ## Goal
-In this lab we will learn how to use a widget to display data, and how to retrieve updated data.
+In this exercise we will learn how to use a widget to display data, and how to retrieve updated data.
 
 We will also learn how to use external libraries within your widget to add extra functionality to them withought having to develop this functionality from scratch.
 
@@ -417,10 +417,10 @@ We have already added the necessary classes to the `i` elements in the Idea List
 2. Vote on an idea. The `rubberBand` animation should be used.
 3. Un-vote on an idea. The `swing` animation should be used.
 
-# Lab 6: Submit an Idea Page
+# Exercise 6: Submit an Idea Page
 
 ## Goal
-In this lab you will learn how to efficiently navigate between portal pages.
+In this exercise you will learn how to efficiently navigate between portal pages.
 
 ## Auto redirect on Idea submission
 
@@ -455,9 +455,9 @@ In this lab you will learn how to efficiently navigate between portal pages.
 
 Using the AngularJS `$location` service to navigate between pages is much more efficient than using `$window.location.href`. This is because `$window.location.href` causes the browser to do a full-page load, whereas using the `$location` service to change URL parameters means only a partial load is done of only the widgets on the page and their dependencies.
 
-# Bonus Lab: Data Tables
+# Bonus Exercise: Data Tables
 ## Goal
-In this bonus lab we will learn how to take the widget options concept even further, by adding brand new fields to our own custom Widget Instance table.
+In this bonus exercise we will learn how to take the widget options concept even further, by adding brand new fields to our own custom Widget Instance table.
 ## Customisable Banner Widget
 1. Open the **Idea Banner** widget in Studio, then from the hamburger menu select **Open in platform**.
 2. Change the **Data table** field to point to the **Instance of Banner** table.
