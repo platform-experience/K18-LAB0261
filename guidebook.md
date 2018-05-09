@@ -119,7 +119,7 @@ In this exercise we will learn how to create widgets that are customizable.
 	- [Option schema](scripts/lab-03/banner-option-schema.json.txt)
 
 3. Let's add this widget to our home page. Open the **Idea Home** page again (under **Service Portal** ► **Pages**).
-4. Click the **Open in Designer ➚** related link at the botto of the form.
+4. Click the **Open in Designer ➚** related link at the bottom of the form.
 5. In the **Widgets** area of the left-hand panel, find our **Idea Banner** widget, and drag and drop it into our **12** column layout in the first container.
 6. Hover over the widget that's now in the container, and click the pencil icon. You will see four options you can configure on this widget. Fill in the options as follows, and press **Save**.
 
