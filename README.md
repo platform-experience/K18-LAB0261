@@ -1,5 +1,5 @@
 ## Configuring an Engaging Service Portal
-Imagine if building powerful experiences was as easy as building a website. This session will give you an overview of the ServiceNow Service Portal framework and how to manage the flow of content for an optimized user experience using out of the box and customizable widgets.
+Imagine if building powerful experiences was as easy as building a website. This session will give you an overview of the ServiceNow Service Portal framework in the context of an Ideation portal, allowing users to submit and vote on ideas. We will cover intermediate-level topics relating to Service Portal, and touch on advanced-level topics giving you a taste of the true power of Service Portal.
 
 ## Instance Preparation
 
@@ -13,4 +13,4 @@ This lab requires that your instance is running the **Kingston** release of Serv
 
 For instructions on installing update sets, see the [ServiceNow Documentation site](https://docs.servicenow.com/bundle/istanbul-application-development/page/build/system-update-sets/task/t_LoadCustomizationsFromAnXMLFile.html).
 
-That's it! You're now all set to begin the lab!
+That's it! You're now all set to [begin the lab](guidebook.md)!

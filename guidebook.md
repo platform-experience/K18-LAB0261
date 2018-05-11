@@ -7,12 +7,12 @@ In this exercise you will learn how to configure portals and customise their the
 
 2. Login as an administrator (e.g. `admin`).
 3.	In the application navigator, search for and open **Studio**, and pick the **Idea Portal** application.
-4. Back in the regular interface, search for **Portals** in the application navigator, and open the result under the **Service Portal** application. Open the **Idea Portal** record from the list.
+4. In Studio, under the **Service Portals** heading, click on **Idea Portal**.
 
 	Notice the **URL Suffix** to access this portal is `ideas`.
-6.	Download **`logo-rev.png`** ([link](resources/lab-01/logo-rev.png)), upload it to the **Logo** field.
-7.	This portal is associated with the **Idea Portal** theme. Click on the ![Information](images/lab-01/01-theme.png) icon next to the **Theme** field and open the record.
-8. Update the Idea Portal theme record to have the values below, then press **Update**.
+6.	Download **`logo-rev.png`** ([link](resources/lab-01/logo-rev.png)), upload it to the **Logo** field, and press **Save**.
+7.	This portal is associated with the **Idea Portal** theme. Click on the ![Information](images/lab-01/01-theme.png) icon next to the **Theme** field to open the record.
+8. Update the Idea Portal theme record to have the values below, then press **Save**.
 
 	| Field         | New Value                                 |
 	|---------------|-------------------------------------------|
@@ -33,7 +33,7 @@ In this exercise we will create a login page for our portal, and the home page w
 
 	When you click out of the field you will notice the value is automatically converted to lowercase, and spaces will be replaced with underscores. This is because the page's ID is used in the URL when accessing it, and URL's are case insensitive and don't support spaces.
 6. Press **Update**.
-7. Open the **Idea Portal** record again from the application navigator (**Service Portal** ► **Portals**). Update the **Login page** field to point to the newly-cloned `idea_login` page, then save the record.
+7. In Studio, navigate to the **Idea Portal** record again. Update the **Login page** field to point to the newly-cloned `idea_login` page, then save the record.
 
 ### Verify the Changes
 Open a browser which you're not logged into (or an "incognito" window) and navigate to `/ideas` on your instance. You should see the below page.
@@ -41,7 +41,7 @@ Open a browser which you're not logged into (or an "incognito" window) and navig
 ![Login](images/lab-02/01-login.png)
 
 ## Modifying Pages
-1. Open **Service Portal Configuration** (under the **Service Portal** heading in the application navigator). Click **Page Editor**, and then from the drop-down choose the **Idea Login** page.
+1. In Studio, open the **Idea Login** page (under **Service Portal** ► **Service Portal Pages**).
 	
 2. In the tree at the top of the window, click the `idea_login` node.
 
@@ -89,9 +89,9 @@ Open a browser which you're not logged into (or an "incognito" window) and navig
 ![HTML Instance Options](images/lab-02/06-verify.png)
 
 ## Creating Pages
-1. Again, open **Pages** from the application navigator (under the **Service Portal** heading). Click **New** at the top of the list.
+1. In Studio, click **Create Application File**. Search for and click on **Service Portal Page**, then click **Create**.
 	
-2. Set **Idea Home** as the **Page title**, and `idea_home` as the **Page ID**. Right-click on the header and choose **Save**. From the related links at the bottom of the page, choose **Open in Designer ➚**.
+2. Set **Idea Home** as the **Page title**. The **Page ID** will automatically populate as `idea_home`. Click **Submit**.
 3. Every new page has a default container already on it, but we need two. Drag and drop a container below the existing one from the **Layouts** area of the left-hand panel. Your page should now look like this:
 	
 	![Designer Containers](images/lab-02/07-designer-containers.png)
@@ -101,27 +101,28 @@ Open a browser which you're not logged into (or an "incognito" window) and navig
 	Select the first container on the page by clicking on it. The border of the selected container will highlight blue. Now, click the pencil icon in the top-right corner of the window. In the dialog that appears, change the **Width** field to **Fluid** and press **Save**.
 	
 5. Drag and drop a **12** column layout from the Layouts panel into the first container, and a **3 | 9** column layout into the second container.
-6. Open the **Idea Portal** record again (under **Service Portal** ► **Portals**).
-7. As the **Homepage**, select `idea_home` and press **Update**.
+6. Back in Studio, open the **Idea Portal** record again (under **Service Portal** ► **Service Portals**).
+7. As the **Homepage**, select `idea_home` and press **Save**.
 
 # Exercise 3: Banner Widget
 ## Goal
 In this exercise we will learn how to create widgets that are customizable.
 
 ## Banner Widget
-1. For convenience, we have included the **Idea Banner** widget on your instance, but it's empty. Find and open this widget on your instance (**Service Portal** ► **Widgets**)
+1. For convenience, we have included the **Idea Banner** widget on your instance, but it's empty. Find this widget in Studio, and open it.
 
-2. There's quite a bit of code that makes up this widget, so for convenience you can copy and paste the code into the corresponding fields from the below links. After doing so, press the **Update** button to save the record.
+2. Click the hamburger menu at the top-right corner of the widget editor (![Hamburger Menu](images/lab-03/01-hamburger.png)), and click **Open in platform**
+3. There's quite a bit of code that makes up this widget, so for convenience you can copy and paste the code into the corresponding fields from the below links. After doing so, press the **Update** button to save the record.
 	- [Body HTML template](scripts/lab-03/banner-body-html-template.html.txt)
 	- [CSS](scripts/lab-03/banner-css.scss.txt)
 	- [Server script](scripts/lab-03/banner-server-script.js.txt)
 	- [Client controller](scripts/lab-03/banner-client-controller.js.txt)
 	- [Option schema](scripts/lab-03/banner-option-schema.json.txt)
 
-3. Let's add this widget to our home page. Open the **Idea Home** page again (under **Service Portal** ► **Pages**).
-4. Click the **Open in Designer ➚** related link at the bottom of the form.
-5. In the **Widgets** area of the left-hand panel, find our **Idea Banner** widget, and drag and drop it into our **12** column layout in the first container.
-6. Hover over the widget that's now in the container, and click the pencil icon. You will see four options you can configure on this widget. Fill in the options as follows, and press **Save**.
+4. Let's add this widget to our home page. In Studio, click on **Idea Home** (under **Service Portal** ► **Service Portal Pages**).
+5. In the window that opens, click the **Edit Idea Home (idea_home) page in Designer** link.
+6. In the **Widgets** area of the left-hand panel, find our **Idea Banner** widget, and drag and drop it into our **12** column layout in the first container.
+7. Hover over the widget that's now in the container, and click the pencil icon. You will see four options you can configure on this widget. Fill in the options as follows, and press **Save**.
 
 	| Option         | Value                                 |
 	|---------------|-------------------------------------------|
@@ -130,8 +131,8 @@ In this exercise we will learn how to create widgets that are customizable.
 	| Align Image | center |
 	| Heading Text Color | #d9534f |
 
-7. Let's add a few more options for this widget. Open the **Idea Banner** widget again (under **Service Portal** ► **Widgets**), and click **Open in Widget Editor ➚** related link at the bottom of the form. Click the hamburger menu at the top-right corner of the widget editor (![Hamburger Menu](images/lab-03/01-hamburger.png)), and click **Edit option schema**.
-8. We are going to add two new options. In the **Widget Option Schema** popup, you can click on the plus icon to add a new option.
+8. Let's add a few more options for this widget. Click on the **Idea Banner** widget in Studio, click on the hamburger menu again, but this time click **Edit option schema**.
+9. We are going to add two new options. In the **Widget Option Schema** popup, you can click on the plus icon to add a new option.
 
 	Create the following two options, then press **Save** on the widget options dialog:
 
@@ -149,10 +150,10 @@ In this exercise we will learn how to create widgets that are customizable.
 	| Type | string |
 	| Form section | Presentation |
 	
-9. Press **Save** in the widget editor to save your changes to this widget.
+10. Press **Save** in the widget editor to save your changes to this widget.
 
-10. Open the **Idea Home** page in Service Portal Designer again (**Service Portal** ► **Pages** ► **Idea Home** ► **Open in Designer ➚**).
-11. Open the options for the **Idea Banner** widget (the same way as was done in step 6). Fill in the new options we created as follows, and press **Save**.
+11. In Studio, open the **Idea Home** page. In the window that opens, click the **Edit Idea Home (idea_home) page in Designer** link.
+12. Open the options for the **Idea Banner** widget (the same way as was done in step 7). Fill in the new options we created as follows, and press **Save**.
 
 	| Option         | Value                                 |
 	|---------------|-------------------------------------------|
@@ -160,7 +161,7 @@ In this exercise we will learn how to create widgets that are customizable.
 	| Sub Heading Text Colour | #fff |
 
 ### How it Works
-Open the **Idea Banner** widget in Widget Editor, and refer to the **HTML Template** pane.
+Click on the **Idea Banner** widget in Studio, and refer to the **HTML Template** pane.
 
 - AngularJS has a built-in directive called **[ngStyle](https://docs.angularjs.org/api/ng/directive/ngStyle)**. With this directive you can set the values of CSS styles based on the results of an AngularJS expression. The expression can be a call to a function, or simply an in-line JSON object. Widget options can easily be accessed within this JSON object using the format `c.options.YOUR_OPTION_NAME`, as shown below.
 
@@ -174,7 +175,7 @@ Open the **Idea Banner** widget in Widget Editor, and refer to the **HTML Templa
 In this exercise we will learn how to create widgets which control the behaviour of other widgets.
 
 ## Creating Widgets
-1. Open Widget Editor (**Service Portal** ► **Service Portal Configuration ➚** ► **Widget Editor**) 
+1. In Studio, click **Create Application File**, search for and choose **Widget**, and click **Create**.
 
 2. Click the **Create a new widget** link. Use the below values in the fields, and click **Submit**.
 
@@ -236,7 +237,7 @@ In this exercise we will learn how to use a widget to display data, and how to r
 We will also learn how to use external libraries within your widget to add extra functionality to them withought having to develop this functionality from scratch.
 
 ## Create the Widget
-1. Open Widget Editor (**Service Portal** ► **Service Portal Configuration ➚** ► **Widget Editor**) 
+1. In Studio, click **Create Application File**, search for and choose **Widget**, and click **Create**.
 
 2. Click the **Create a new widget** link. Use the below values in the fields, and choose **Submit**.
 
@@ -247,8 +248,8 @@ We will also learn how to use external libraries within your widget to add extra
 	
 3. There's quite a bit of code that makes up this widget, so you can copy and paste the code into the corresponding fields from the below links, then save the record:
 	- [Body HTML template](scripts/lab-05/idea-list-body-html-template.html.txt)
-	- [CSS - SCSS](scripts/lab-05/idea-list-css.scss.txt)
-	- [Client Script](scripts/lab-05/idea-list-client-controller.js.txt)
+	- [CSS](scripts/lab-05/idea-list-css.scss.txt)
+	- [Client controller](scripts/lab-05/idea-list-client-controller.js.txt)
 
 4. Now, open the **Idea Home** page in Service Portal Designer, and drag and drop the new **Idea List** widget we've created into the **9** column area of the second container.
 
@@ -347,7 +348,7 @@ In the UI, the creation date isn't in a human-readable format:
 
 It would be much better if it were to say something like "*created 3 days ago*", which is what is sometimes referred to as **timeago format**. Fortunately, the **Moment.js** library comes out-of-box with Service Portal. [Moment.js](https://momentjs.com/) is a very powerful library to parse, validate, and manipulate dates in JavaScript. With the help of this library, we can easily convert this date to display in timeago format.
 
-1. Open the **Idea List** widget in Widget Editor.
+1. Open the **Idea List** widget in Studio.
 
 2. Comment out line **85** of the Client Script by adding two backslashes at the start of the line (`//`).
 3. Un-comment line **86** by removing the two backslashes from the start of the line.
@@ -387,7 +388,7 @@ It's very simple to leverage a third party library in your widget. Here in our e
 
 	![Animate css](images/lab-05/13-animate-css.png)  
 	
-2. Open the **Idea List** widget in the regular interface.
+2. Open the **Idea List** widget in Studio, then from the hamburger menu select **Open in platform**.
 3. In the **Dependencies** related list at the bottom of the page, click **New**.	
 
 	![Dependency Tab](images/lab-05/14-dependency-1.png)  
@@ -454,7 +455,7 @@ Using the AngularJS `$location` service to navigate between pages is much more e
 ## Goal
 In this bonus exercise we will learn how to take the widget options concept even further, by adding brand new fields to our own custom Widget Instance table.
 ## Customisable Banner Widget
-1. Open the **Idea Banner** widget in the regular interface.
+1. Open the **Idea Banner** widget in Studio, then from the hamburger menu select **Open in platform**.
 2. Change the **Data table** field to point to the **Instance of Banner** table.
 3. In the **Fields** field, add the following:
 	- Background image
@@ -510,10 +511,11 @@ Let's add a few more fields to our custom widget instance table.
 	
 3. In Studio, open the form layout for the **Instance of Banner** table, in the **SP Instance Config** view.
 4. Add the two new columns we created to the view under the **Presentation** section, then click **Save**.
-5. Open the **Idea Banner** widget in the regular interface.
+5. Find the **Idea Banner** widget in Studio, and open it.
+6. Click the hamburger menu at the top-right corner of the widget editor, and click **Open in platform**
 6. Add the two new columns we created to the **Fields** field's slushbucket, and click the **Update** UI Action.
-7. Open the **Idea Home** page in Service Portal Designer, and open the widget options for the banner.
-8. Set the new fields to have the below values:
+6. Open the **Idea Home** page in Service Portal Designer, and open the widget options for the banner.
+7. Set the new fields to have the below values:
 
 	| Field         | Value                                 |
 	|---------------|-------------------------------------------|
